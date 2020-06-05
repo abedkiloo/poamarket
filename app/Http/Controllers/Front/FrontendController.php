@@ -140,6 +140,32 @@ class FrontendController extends Controller
 
 	    return view('front.index',compact('ps','sliders','top_small_banners','feature_products'));
 	}
+	public function former_index(Request $request)
+	{
+        $this->code_image();
+         if(!empty($request->reff))
+         {
+            $affilate_user = User::where('affilate_code','=',$request->reff)->first();
+            if(!empty($affilate_user))
+            {
+                $gs = Generalsetting::findOrFail(1);
+                if($gs->is_affilate == 1)
+                {
+                    Session::put('affilate', $affilate_user->id);
+                    return redirect()->route('front.index');
+                }
+
+            }
+
+         }
+        $selectable = ['id','user_id','name','slug','features','colors','thumbnail','price','previous_price','attributes','size','size_price','discount_date'];
+        $sliders = DB::table('sliders')->get();
+        $top_small_banners = DB::table('banners')->where('type','=','TopSmall')->get();
+        $ps = DB::table('pagesettings')->find(1);
+        $feature_products =  Product::where('featured','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(8)->get();
+
+	    return view('front.previous_index',compact('ps','sliders','top_small_banners','feature_products'));
+	}
 
     public function extraIndex()
     {
@@ -225,7 +251,16 @@ class FrontendController extends Controller
             if($request->ajax()){
                 return view('front.pagination.blog',compact('blogs'));
             }
-		return view('front.blog',compact('blogs'));
+        return view('front.blog', compact('blogs'));
+	}
+	public function alternate_blog(Request $request)
+	{
+        $this->code_image();
+		$blogs = Blog::orderBy('created_at','desc')->paginate(9);
+            if($request->ajax()){
+                return view('front.pagination.blog',compact('blogs'));
+            }
+        return view('front.blog-alternate', compact('blogs'));
 	}
 
     public function blogcategory(Request $request, $slug)

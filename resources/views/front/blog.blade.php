@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -12,7 +12,7 @@
           {{-- Category Breadcumbs --}}
 
           @if(isset($bcat))
-                
+
               <li>
                 <a href="{{ route('front.index') }}">
                   {{ $langg->lang17 }}
@@ -48,7 +48,7 @@
               </li>
 
           @elseif(isset($search))
-                
+
               <li>
                 <a href="{{ route('front.index') }}">
                   {{ $langg->lang17 }}
@@ -71,7 +71,7 @@
               </li>
 
           @elseif(isset($date))
-                
+
               <li>
                 <a href="{{ route('front.index') }}">
                   {{ $langg->lang17 }}
@@ -89,7 +89,7 @@
               </li>
 
           @else
-                
+
               <li>
                 <a href="{{ route('front.index') }}">
                   {{ $langg->lang17 }}
@@ -150,7 +150,7 @@
       </div>
 
         <div class="page-center">
-          {!! $blogs->links() !!}               
+          {!! $blogs->links() !!}
         </div>
 </div>
 
@@ -167,7 +167,7 @@
 @section('scripts')
 
 <script type="text/javascript">
-  
+
 
     // Pagination Starts
 
