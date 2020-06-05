@@ -138,6 +138,7 @@ class FrontendController extends Controller
         $ps = DB::table('pagesettings')->find(1);
         $feature_products =  Product::where('featured','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(8)->get();
 
+
 	    return view('front.index',compact('ps','sliders','top_small_banners','feature_products'));
 	}
 	public function former_index(Request $request)

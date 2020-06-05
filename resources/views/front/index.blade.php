@@ -104,32 +104,41 @@
 
 @if($ps->featured == 1)
 <!-- Trending Item Area Start -->
-<section class="trending">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 remove-padding">
-                <div class="section-top">
-                    <h2 class="section-title">
-                        {{ $langg->lang26 }}
-                    </h2>
-                    {{-- <a href="#" class="link">View All</a> --}}
+<section>
+    <div class="container mb-5 pb-xl-2">
+        <div class="hero-tab-wrapper primary-theme d-sm-flex">
+            <div class="hero-tab">
+                <div class="hero-tab__label">
+                    <h2>Trending</h2>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 remove-padding">
-                <div class="trending-item-slider">
-                    @foreach($feature_products as $prod)
-                    @include('includes.product.slider-product')
-                    @endforeach
-                </div>
-            </div>
+            <div class="hero-tabContent">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="ht-2">
 
+                        <div class="ht-1-carousel hero-tab-carousel">
+
+                            @foreach($feature_products as $key=>$prod)
+                            @include('includes.product.slider-product')
+                            @endforeach
+                            @if(count($feature_products)<6)
+                            @foreach($feature_products as $key=>$prod)
+                            @include('includes.product.slider-product')
+                            @endforeach
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
 <!-- Tranding Item Area End -->
 @endif
+
+
 
 @if($ps->small_banner == 1)
 
