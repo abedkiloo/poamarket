@@ -208,16 +208,28 @@
 
                         <div class="single-blog-items">
                             <div class="blog-main-big-img">
-                                <a href="sMarket-blog-details.html">
-                                    <img src="{{ $blogg->photo ? asset('assets/images/blogs/'.$blogg->photo):asset('assets/images/noimage.png') }}" class="img-fluid" alt="">
+                                <a href='{{route('front.blogshow',$blogg->id)}}'>
+                                <img src="{{ $blogg->photo ? asset('assets/images/blogs/'.$blogg->photo):asset('assets/images/noimage.png') }}"
+                                     class="img-fluid" alt="">
 
                                 </a>
                             </div>
-
+                            @foreach(explode(",",$blogg->tags) as $tg)
+                            @endforeach
+                            <div class="b-top-cat-btn">
+                                @foreach(explode(",",$blogg->tags) as $key=>$tg)
+                                @if($key%2==0)
+                                <a href="" style="background: #33cccc;">{{$tg}}</a>
+                                @else
+                                <a href="" style="background: #e56e6e;">{{$tg}}</a>
+                                @endif
+                                @endforeach
+                               </div>
                             <div class="single-blog-texts">
-                                <a href='{{route('front.blogshow',$blogg->id)}}'>
+                                <a href='{{url('front.blogshow',$blogg->id)}}'>
                                 <h4 class="blog-title">
-                                    {{mb_strlen($blogg->title,'utf-8') > 50 ? mb_substr($blogg->title,0,50,'utf-8')."...":$blogg->title}}
+                                    {{mb_strlen($blogg->title,'utf-8') > 50 ?
+                                    mb_substr($blogg->title,0,50,'utf-8')."...":$blogg->title}}
                                 </h4>
                                 </a>                                </h2>
                                 <p class="blog-text">
@@ -226,7 +238,9 @@
                             </div>
                             <div class="blog-meta">
                                 <ul>
-                                    <li><img src="assets/img/avatar.png" alt="">{{date('d-M-Y', strtotime($blogg->created_at))}}</li>
+                                    <li><img src="assets/img/avatar.png" alt="">{{date('d-M-Y',
+                                        strtotime($blogg->created_at))}}
+                                    </li>
                                     <li>{{$blogg->views}} Views</li>
                                 </ul>
                             </div>
