@@ -386,7 +386,7 @@
 							@if($gs->is_home == 1)
 							<li><a href="{{ route('front.index') }}">{{ $langg->lang17 }}</a></li>
 							@endif
-							<li><a href="{{ route('front.blog') }}">{{ $langg->lang18 }}</a></li>
+							<li><a href="{{ route('front.previous_blog') }}">{{ $langg->lang18 }}</a></li>
 							@if($gs->is_faq == 1)
 							<li><a href="{{ route('front.faq') }}">{{ $langg->lang19 }}</a></li>
 							@endif

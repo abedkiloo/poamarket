@@ -245,6 +245,15 @@ class FrontendController extends Controller
 
 // -------------------------------- BLOG SECTION ----------------------------------------
 
+	public function previous_blog(Request $request)
+	{
+        $this->code_image();
+		$blogs = Blog::orderBy('created_at','desc')->paginate(9);
+            if($request->ajax()){
+                return view('front.pagination.blog',compact('blogs'));
+            }
+        return view('front.previous_blog', compact('blogs'));
+	}
 	public function blog(Request $request)
 	{
         $this->code_image();
@@ -253,15 +262,6 @@ class FrontendController extends Controller
                 return view('front.pagination.blog',compact('blogs'));
             }
         return view('front.blog', compact('blogs'));
-	}
-	public function alternate_blog(Request $request)
-	{
-        $this->code_image();
-		$blogs = Blog::orderBy('created_at','desc')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-        return view('front.blog-alternate', compact('blogs'));
 	}
 
     public function blogcategory(Request $request, $slug)

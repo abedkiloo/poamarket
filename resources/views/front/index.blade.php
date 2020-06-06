@@ -174,7 +174,9 @@
 @section('scripts')
 <script>
     $(window).on('load', function () {
-
+        setTimeout(function () {
+            $('#extraData').load('{{route('front.extraIndex')}}');
+        }, 500);
 
     });
 
