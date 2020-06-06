@@ -35,30 +35,17 @@
                     <div class="contact-tab-inner">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-                               role="tab" aria-controls="v-pills-home" aria-selected="true">
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                               role="tab" aria-controls="v-pills-profile" aria-selected="false">
                                 <div class="tab-button-main">
                                     <div class="tab-button-inner">
                                         <h4><i class="fas fa-map-marker-alt"></i>USA office</h4>
-                                        <p>Address: 8888 @if($ps->street != null)
-                                            {!! $ps->street !!}
-                                            @endif, New York <br>
-                                            Phone: @if($ps->phone != null && $ps->fax != null)
-                                            <a href="tel:{{$ps->phone}}">{{$ps->phone}}</a>
-                                            <a href="tel:{{$ps->fax}}">{{$ps->fax}}</a>
-                                            @elseif($ps->phone != null)
-                                            <a href="tel:{{$ps->phone}}">{{$ps->phone}}</a>
-                                            @else
-                                            <a href="tel:{{$ps->fax}}">{{$ps->fax}}</a>
-                                            @endif <br>
-                                        <p> Email : @if($ps->site != null && $ps->email != null)
-                                            <!--                                            <a href="{{$ps->site}}" target="_blank">{{$ps->site}}</a>-->
-                                            <a href="mailto:{{$ps->email}}">{{$ps->email}}</a>
-                                            @elseif($ps->site != null)
-                                            <a href="{{$ps->site}}" target="_blank">{{$ps->site}}</a>
-                                            @else
-                                            <a href="mailto:{{$ps->email}}">{{$ps->email}}</a>
-                                            @endif</p></p>
+                                        <p>Address: 3584 Hickory Heights <br>
+                                            Drive ,Hanover MD 2107 <br>
+                                            Phone: +00-000-000-000 <br>
+                                            Email:
+                                            //geniusocean.com/
+                                            admin@geniusocean.comm</p>
                                     </div>
                                 </div>
                             </a>
@@ -90,4 +77,33 @@
 
 <!-- Contact Us Area End-->
 
+@endsection
+@section('extra_js')
+<script>
+    $(function () {
+        $('#test')
+            .gmap3({
+                center: [48.8620722, 2.352047],
+                zoom: 4
+            })
+            .marker([{
+                position: [48.8620722, 2.352047]
+            },
+                {
+                    address: "86000 Poitiers, France"
+                },
+                {
+                    address: "66000 Perpignan, France",
+                    icon: "http://maps.google.com/mapfiles/marker_grey.png"
+                }
+            ])
+            .on('click', function (marker) {
+                marker.setIcon('http://maps.google.com/mapfiles/marker_green.png');
+            })
+            .then(function (markers) {
+                markers[1].setIcon('http://maps.google.com/mapfiles/marker_orange.png');
+            });
+    });
+
+</script>
 @endsection
