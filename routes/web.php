@@ -1214,6 +1214,7 @@ Route::group(['middleware' => 'maintenance'], function () {
 
     // CONTACT SECTION
     Route::get('/contact', 'Front\FrontendController@contact')->name('front.contact');
+    Route::get('/previous-contact', 'Front\FrontendController@previous_contact')->name('front.previous_contact');
     Route::post('/contact', 'Front\FrontendController@contactemail')->name('front.contact.submit');
     Route::get('/contact/refresh_code', 'Front\FrontendController@refresh_code');
     // CONTACT SECTION  ENDS

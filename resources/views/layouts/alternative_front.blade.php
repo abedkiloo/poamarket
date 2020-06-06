@@ -112,12 +112,12 @@
                 <div class="site-main-menu">
                     <button class="site-main-menu-trigger"><i class="fas fa-bars"></i> Menu</button>
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i>HOME</a></li>
-                        <li><a href="blog"><i class="fas fa-briefcase"></i>BLOG</a></li>
+                        <li><a href="{{route('front.index')}}"><i class="fas fa-home"></i>HOME</a></li>
+                        <li><a href="{{route('front.blog')}}"><i class="fas fa-briefcase"></i>BLOG</a></li>
                         <li><a href="sMarket-category.html"><i class="fal fa-shopping-bag"></i>SHOP PAGES</a></li>
                         <li><a href="#/"><i class="fal fa-code-merge"></i>SHORT CODES </a></li>
                         <li><a href="#/"><i class="fas fa-coffee"></i>ABOUT US</a></li>
-                        <li><a href="sMarket-contact.html"><i class="far fa-address-card"></i>CONTACT US</a></li>
+                        <li><a href="{{route('front.contact')}}"><i class="far fa-address-card"></i>CONTACT US</a></li>
                     </ul>
                 </div>
             </div>
