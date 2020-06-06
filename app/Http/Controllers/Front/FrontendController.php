@@ -328,6 +328,27 @@ class FrontendController extends Controller
         $blog_meta_description = $blog->meta_description;
         return view('front.blogshow',compact('blog','bcats','tags','archives','blog_meta_tag','blog_meta_description'));
     }
+    public function previous_blogshow($id)
+    {
+        $this->code_image();
+        $tags = null;
+        $tagz = '';
+        $bcats = BlogCategory::all();
+        $blog = Blog::findOrFail($id);
+        $blog->views = $blog->views + 1;
+        $blog->update();
+        $name = Blog::pluck('tags')->toArray();
+        foreach($name as $nm)
+        {
+            $tagz .= $nm.',';
+        }
+        $tags = array_unique(explode(',',$tagz));
+
+        $archives= Blog::orderBy('created_at','desc')->get()->groupBy(function($item){ return $item->created_at->format('F Y'); })->take(5)->toArray();
+        $blog_meta_tag = $blog->meta_tag;
+        $blog_meta_description = $blog->meta_description;
+        return view('front.previous_blogshow',compact('blog','bcats','tags','archives','blog_meta_tag','blog_meta_description'));
+    }
 
 
 // -------------------------------- BLOG SECTION ENDS----------------------------------------
