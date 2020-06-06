@@ -83,13 +83,13 @@
             <div class="col-sm-5">
                 <ul class="navbar-top__link float-sm-right text-center text-sm-auto mt-3 mt-sm-0">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('user.login') }}">
                             <img src="assets/img/user-icon.png" alt="">
                             <p>Account</p>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('front.cart') }}">
                             <img src="assets/img/cart-icon.png" alt="">
                             <p>Cart</p>
                         </a>

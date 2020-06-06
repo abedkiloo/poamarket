@@ -163,7 +163,7 @@
 <!-- Banner Area One Start -->
 @endif
 
-<section id="extraData">
+<section id="extraData" style="display: none;">
     <div class="text-center">
         <img src="{{asset('assets/images/'.$gs->loader)}}">
     </div>
