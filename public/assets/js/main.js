@@ -79,6 +79,13 @@
       // bootstrap selectpicker
       $('.selectpicker').selectpicker();
 
+      // Data Table 
+      $('#example').DataTable({
+        "paging":   true,
+        "ordering": false,
+        "info":     true
+      });
+
       // price range slider
       $( ".price-slider" ).slider({
         range: true,

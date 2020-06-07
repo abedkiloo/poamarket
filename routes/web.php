@@ -1191,7 +1191,7 @@ Route::group(['middleware' => 'maintenance'], function () {
 // ************************************ FRONT SECTION **********************************************
 
     Route::get('/', 'Front\FrontendController@index')->name('front.index');
-    Route::get('/index', 'Front\FrontendController@former_index')->name('front.index');
+    Route::get('/index', 'Front\FrontendController@former_index')->name('front.previous_index');
     Route::get('/extras', 'Front\FrontendController@extraIndex')->name('front.extraIndex');
     Route::get('/currency/{id}', 'Front\FrontendController@currency')->name('front.currency');
     Route::get('/language/{id}', 'Front\FrontendController@language')->name('front.language');
@@ -1347,6 +1347,16 @@ Route::group(['middleware' => 'maintenance'], function () {
     // PAGE SECTION
     Route::get('/{slug}', 'Front\FrontendController@page')->name('front.page');
     // PAGE SECTION ENDS
+
+    Route::get('/success', function () {
+        return view('success');
+    });
+    Route::get('/failed', function () {
+        return view('failed');
+    });
+
+    Route::post('/pay', 'FlutterWaveController@initialize')->name('pay');
+    Route::post('/rave/callback', 'FlutterWaveController@callback')->name('callback');
 
 // ************************************ FRONT SECTION ENDS**********************************************
 

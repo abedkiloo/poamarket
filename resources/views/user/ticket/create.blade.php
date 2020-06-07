@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -16,7 +16,7 @@
                                 </h4>
                                 @endif
 								<h4 class="title">
-									{{ $langg->lang397 }} {{$conv->subject}} <a  class="mybtn1" href="{{ url()->previous() }}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang398 }}</a>
+									{{ $langg->lang397 }} {{$conv->subject}} <a  class="popup-hero__btn" href="{{ url()->previous() }}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang398 }}</a>
 								</h4>
 							</div>
 

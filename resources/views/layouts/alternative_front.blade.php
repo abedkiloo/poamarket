@@ -14,7 +14,8 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/all.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/fontawesome.css')}}" rel="stylesheet">
@@ -28,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/slick-theme.css')}}">
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
 </head>
 <body>
 <!-- header top start   -->
@@ -82,13 +84,13 @@
             <div class="col-sm-5">
                 <ul class="navbar-top__link float-sm-right text-center text-sm-auto mt-3 mt-sm-0">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('user.login') }}">
                             <img src="assets/img/user-icon.png" alt="">
                             <p>Account</p>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('front.cart') }}">
                             <img src="assets/img/cart-icon.png" alt="">
                             <p>Cart</p>
                         </a>
@@ -792,7 +794,11 @@
 
 
 
-
+<script type="text/javascript">
+    var mainurl = "{{url('/')}}";
+    var gs      = {!! json_encode($gs) !!};
+    var langg    = {!! json_encode($langg) !!};
+</script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/Popper.js')}}"></script>
@@ -805,6 +811,7 @@
 <script src="{{asset('assets/js/jquery.magnific-popup.min.j')}}s"></script>
 <script src="{{asset('assets/js/bootstrap-select.js')}}"></script>
 <script src="{{asset('assets/js/jquery.nice-select.js')}}"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -855,8 +862,9 @@
 
 
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{asset('assets/js/custom.js')}}"></script>
 
-
+@yield('scripts')
 </body>
 
 </html>

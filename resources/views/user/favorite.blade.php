@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -37,8 +37,8 @@
                               <td>{{$seller->shop_address}}</td>
 
                             <td>
-                              <a target="_blank" href="{{route('front.vendor',str_replace(' ', '-',($seller->shop_name)))}}" class="link view"><i class="fa fa-eye"></i></a>
-                              <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete" data-href="{{route('user-favorite-delete',$vendor->id)}}" class="link remove"><i class="fa fa-trash"></i></a>
+                              <a target="_blank" href="{{route('front.vendor',str_replace(' ', '-',($seller->shop_name)))}}" class="btn btn-sm btn-warning btn-rounded"><i class="fa fa-eye"></i></a>
+                              <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete" data-href="{{route('user-favorite-delete',$vendor->id)}}" class="btn btn-sm btn-danger btn-rounded"><i class="fa fa-trash"></i></a>
                             </td>
 
                           </tr>

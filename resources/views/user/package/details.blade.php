@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 <section class="user-dashbord">
@@ -11,7 +11,7 @@
 <div class="account-info">
                             <div class="header-area">
                                 <h4 class="title">
-                                    {{ $langg->lang409 }} <a class="mybtn1" href="{{route('user-package')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang410 }}</a>
+                                    {{ $langg->lang409 }} <a class="popup-hero__btn" href="{{route('user-package')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang410 }}</a>
                                 </h4>
                             </div>
                             <div class="pack-details">
@@ -287,11 +287,13 @@
                                             </div>
 
                                 @endif
+                                <br>
+                                <br>
                                 <div class="row">
                                     <div class="col-lg-4">
                                     </div>
                                     <div class="col-lg-8">
-                                            <button type="submit" id="final-btn" class="mybtn1">{{ $langg->lang426 }}</button>
+                                            <button type="submit" id="final-btn" class="popup-hero__btn">{{ $langg->lang426 }}</button>
                                     </div>
                                 </div>
 

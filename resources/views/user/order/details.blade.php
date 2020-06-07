@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 <!-- User Dashbord Area Start -->
 <section class="user-dashbord">
@@ -25,7 +25,7 @@
                             </h3>
                             <div class="print-order text-right">
                                 <a href="{{route('user-order-print',$order->id)}}" target="_blank"
-                                    class="print-order-btn">
+                                    class="popup-hero__btn">
                                     <i class="fa fa-print"></i> {{ $langg->lang286 }}
                                 </a>
                             </div>
@@ -183,12 +183,12 @@
                                         <a id="tid" style="cursor: pointer;" class="mybtn2">{{ $langg->lang297 }}</a> 
 
                                         <form id="tform">
-                                            <input style="display: none; width: 100%;" type="text" id="tin" placeholder="{{ $langg->lang299 }}" required="" class="mb-3">
+                                            <input style="display: none; width: 100%;" type="text" id="tin" placeholder="{{ $langg->lang299 }}" required="" class="form-control mb-3">
                                             <input type="hidden" id="oid" value="{{$order->id}}">
 
-                                            <button style="display: none; padding: 5px 15px; height: auto; width: auto; line-height: unset;" id="tbtn" type="submit" class="mybtn1">{{ $langg->lang300 }}</button>
+                                            <button style="display: none; padding: 5px 15px; height: auto; width: auto; line-height: unset;" id="tbtn" type="submit" class="popup-hero__btn">{{ $langg->lang300 }}</button>
                                                 
-                                                <a style="display: none; cursor: pointer;  padding: 5px 15px; height: auto; width: auto; line-height: unset;" id="tc"  class="mybtn1">{{ $langg->lang298 }}</a>
+                                                <a style="color: #fff; display: none; cursor: pointer;  padding: 5px 15px; height: auto; width: auto; line-height: unset;" id="tc"  class="popup-hero__btn">{{ $langg->lang298 }}</a>
                                                 
                                                 {{-- Change 1 --}}
                                         </form>

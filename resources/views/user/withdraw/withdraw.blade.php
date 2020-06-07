@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 
 @section('styles')
 <style type="text/css">
@@ -22,7 +22,7 @@
 							<div class="header-area">
 								<h4 class="title" >
 									{{ $langg->lang336 }}
-									<a class="mybtn1" href="{{route('user-wwt-index')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang337 }}</a>
+									<a class="popup-hero__btn" href="{{route('user-wwt-index')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang337 }}</a>
 								</h4>
 							</div>
 
@@ -132,7 +132,7 @@
 
                                             <hr>
                                             <div class="add-product-footer">
-                                                <button name="addProduct_btn" type="submit" class="mybtn1">{{ $langg->lang354 }}</button>
+                                                <button name="addProduct_btn" type="submit" class="popup-hero__btn">{{ $langg->lang354 }}</button>
                                             </div>
                                         </form>
 

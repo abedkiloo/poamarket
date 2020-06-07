@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -16,7 +16,7 @@
                             {{$conv->recieved->name}}    
                             @else
                             {{$conv->sent->name}}
-                            @endif <a  class="mybtn1" href="{{ route('user-messages') }}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang373 }}</a>
+                            @endif <a  class="popup-hero__btn" href="{{ route('user-messages') }}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang373 }}</a>
 								</h4>
 							</div>
 
@@ -95,7 +95,7 @@
                                 <textarea class="form-control" name="message" id="wrong-invoice" rows="5" style="resize: vertical;" required="" placeholder="{{ $langg->lang374 }}"></textarea>
                             </div>
                             <div class="form-group">
-                                <button class="mybtn1">
+                                <button class="popup-hero__btn">
                                     {{ $langg->lang375 }}
                                 </button>
                             </div>

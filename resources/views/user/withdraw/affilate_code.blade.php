@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')      
 
 <section class="user-dashbord">
@@ -23,7 +23,7 @@
 
                                                     <div class="row">
                                                         <div class="col-lg-4 text-right pt-2 f-14">
-                                                            <label>{{ $langg->lang323 }} <a id="affilate_click" data-toggle="tooltip" data-placement="top" title="Copy"  href="javascript:;" class="mybtn1 copy"><i class="fas fa-copy"></i></a></label>
+                                                            <label>{{ $langg->lang323 }} <a id="affilate_click" data-toggle="tooltip" data-placement="top" title="Copy"  href="javascript:;" class="btn-copy"><i class="fas fa-copy"></i></a></label>
                                                             <br>
                                                             <small>{{ $langg->lang324 }}</small>
                                                         </div>
@@ -45,7 +45,7 @@
 
                                                     <div class="row">
                                                         <div class="col-lg-4 text-right pt-2 f-14">
-                                                            <label>{{ $langg->lang327 }} <a id="affilate_html_click" data-toggle="tooltip" data-placement="top" title="Copy"  href="javascript:;" class="mybtn1 copy"><i class="fas fa-copy"></i></a></label>
+                                                            <label>{{ $langg->lang327 }} <a id="affilate_html_click" data-toggle="tooltip" data-placement="top" title="Copy"  href="javascript:;" class="btn-copy"><i class="fas fa-copy"></i></a></label>
                                                             <br>
                                                             <small>{{ $langg->lang328 }}</small>
                                                         </div>

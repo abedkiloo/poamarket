@@ -163,12 +163,12 @@
 <!-- Banner Area One Start -->
 @endif
 
-<!--<section id="extraData">-->
-<!--    <div class="text-center">-->
-<!--        <img src="{{asset('assets/images/'.$gs->loader)}}">-->
-<!--    </div>-->
-<!--</section>-->
-<!---->
+<section id="extraData" style="display: none;">
+    <div class="text-center">
+        <img src="{{asset('assets/images/'.$gs->loader)}}">
+    </div>
+</section>
+
 
 @endsection
 @section('scripts')

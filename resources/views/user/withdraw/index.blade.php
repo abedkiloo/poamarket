@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -12,7 +12,7 @@
 							<div class="header-area">
 								<h4 class="title" >
 									{{ $langg->lang329 }}
-									<a class="mybtn1" href="{{route('user-wwt-create')}}"> <i class="fas fa-plus"></i> {{ $langg->lang330 }}</a>
+									<a class="popup-hero__btn" href="{{route('user-wwt-create')}}"> <i class="fas fa-plus"></i> {{ $langg->lang330 }}</a>
 								</h4>
 							</div>
 							<div class="mr-table allproduct mt-4">
