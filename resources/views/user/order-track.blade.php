@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -17,7 +17,7 @@
                             <form id="t-form" class="tracking-form">
                                 {{ csrf_field() }}
                                 <input type="text" id="code" placeholder="{{ $langg->lang773 }}" required="">
-                                <button type="submit" class="mybtn1">{{ $langg->lang774 }}</button>
+                                <button type="submit" class="popup-hero__btn">{{ $langg->lang774 }}</button>
                                 <a href="#"  data-toggle="modal" data-target="#order-tracking-modal"></a>
                             </form>
                         </div>

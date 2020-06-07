@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')      
 
 <section class="user-dashbord">
@@ -100,7 +100,7 @@
                                             </div>
     
                                             <div class="form-links">
-                                                <button class="submit-btn" type="submit">{{ $langg->lang271 }}</button>
+                                                <button class="popup-hero__btn" type="submit">{{ $langg->lang271 }}</button>
                                             </div>
                                         </form>
                                     </div>

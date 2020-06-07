@@ -14,6 +14,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/all.min.css')}}" rel="stylesheet">
@@ -810,6 +811,7 @@
 <script src="{{asset('assets/js/jquery.magnific-popup.min.j')}}s"></script>
 <script src="{{asset('assets/js/bootstrap-select.js')}}"></script>
 <script src="{{asset('assets/js/jquery.nice-select.js')}}"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 
 

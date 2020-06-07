@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 
@@ -11,7 +11,7 @@
 						<div class="order-history">
 							<div class="header-area d-flex align-items-center">
 								<h4 class="title">{{ $langg->lang356 }}</h4>
-                <a data-toggle="modal" data-target="#vendorform" class="mybtn1 ml-3" href="javascript:;"> <i class="fas fa-envelope"></i> 
+                <a data-toggle="modal" data-target="#vendorform" class="popup-hero__btn ml-3" href="javascript:;"> <i class="fas fa-envelope"></i> 
                   {{ $langg->lang357 }}
                 </a>                
 							</div>
@@ -41,8 +41,8 @@
                             <td>{{$conv->subject}}</td>
                             <td>{{$conv->created_at->diffForHumans()}}</td>
                             <td>
-                              <a href="{{route('user-message',$conv->id)}}" class="link view"><i class="fa fa-eye"></i></a>
-                              <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete" data-href="{{route('user-message-delete',$conv->id)}}" class="link remove"><i class="fa fa-trash"></i></a>
+                              <a href="{{route('user-message',$conv->id)}}" class="btn btn-rounded btn-sm btn-warning"><i class="fa fa-eye"></i></a>
+                              <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete" data-href="{{route('user-message-delete',$conv->id)}}" class="btn btn-rounded btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                           </tr>
