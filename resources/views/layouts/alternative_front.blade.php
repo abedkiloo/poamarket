@@ -911,6 +911,7 @@
 <script src="{{asset('assets/js/jquery.magnific-popup.min.j')}}s"></script>
 <script src="{{asset('assets/js/bootstrap-select.js')}}"></script>
 <script src="{{asset('assets/js/jquery.nice-select.js')}}"></script>
+
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 

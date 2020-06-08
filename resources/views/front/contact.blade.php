@@ -33,8 +33,8 @@
             <div class="col-lg-12">
                 <div class="contact-top-map-tab">
                     <div class="contact-tab-inner">
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                             aria-orientation="vertical">
+<!--                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"-->
+<!--                             aria-orientation="vertical">-->
                             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
                                role="tab" aria-controls="v-pills-profile" aria-selected="false">
                                 <div class="tab-button-main">
@@ -44,10 +44,10 @@
                                             Drive ,Hanover MD 2107 <br>
                                             Phone: +00-000-000-000 <br>
                                             Email:
-                                            //geniusocean.com/
+                                            //geniusocean.com/<br/>
                                             admin@geniusocean.comm</p>
                                     </div>
-                                </div>
+<!--                                </div>-->
                             </a>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
@@ -78,7 +78,9 @@
 <!-- Contact Us Area End-->
 
 @endsection
-@section('extra_js')
+@section('scripts')
+<script src="{{asset('assets/js/gmap3.js')}}"></script>
+
 <script>
     $(function () {
         $('#test')
