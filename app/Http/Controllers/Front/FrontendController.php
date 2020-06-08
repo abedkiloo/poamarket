@@ -246,7 +246,7 @@ class FrontendController extends Controller
         $latest_products = Product::where('latest', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
         $trending_products = Product::where('trending', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
         $sale_products = Product::where('sale', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
-        return view('front.extraindex', compact('ps', 'services', 'reviews', 'large_banners', 'bottom_small_banners', 'best_products', 'top_products', 'hot_products', 'latest_products', 'big_products', 'trending_products', 'sale_products', 'discount_products', 'partners'));
+        return view('front.previous_extraindex', compact('ps', 'services', 'reviews', 'large_banners', 'bottom_small_banners', 'best_products', 'top_products', 'hot_products', 'latest_products', 'big_products', 'trending_products', 'sale_products', 'discount_products', 'partners'));
     }
 
 // CURRENCY SECTION ENDS

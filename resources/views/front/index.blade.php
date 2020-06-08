@@ -1,4 +1,4 @@
-@extends('layouts.alternative_front')
+@extends('layouts.index_front')
 
 @section('content')
 
@@ -65,6 +65,9 @@
 @endif
 
 
+
+
+
 @if($ps->featured_category == 1)
 
 {{-- Slider buttom Category Start --}}
@@ -102,41 +105,464 @@
 
 @endif
 
-@if($ps->featured == 1)
-<!-- Trending Item Area Start -->
-<section>
-    <div class="container mb-5 pb-xl-2">
-        <div class="hero-tab-wrapper primary-theme d-sm-flex">
-            <div class="hero-tab">
-                <div class="hero-tab__label">
-                    <h2>Trending</h2>
-                </div>
+
+<div class="container mb-5 pb-xl-2">
+    <div class="hero-tab-wrapper primary-theme d-sm-flex">
+        <div class="hero-tab">
+            <div class="hero-tab__label">
+                <h2>Living room</h2>
             </div>
-            <div class="hero-tabContent">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="ht-2">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-1">
+                        <img src="assets/img/ht-1.png" alt="">
+                        Living room lighting
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center active" data-toggle="tab" href="#ht-2">
+                        <img src="assets/img/ht-2.png" alt="">
+                        Sofas & Tables
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-3">
+                        <img src="assets/img/ht-3.png" alt="">
+                        Coffee & side tables
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-4">
+                        <img src="assets/img/ht-4.png" alt="">
+                        Tv & Media Furniture
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-5">
+                        <img src="assets/img/ht-5.png" alt="">
+                        Living room Storage
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-6">
+                        <img src="assets/img/ht-6.png" alt="">
+                        Flowerpot Room
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="hero-tabContent">
+            <div class="tab-content">
+                <div class="tab-pane" id="ht-1">
+                    <ul class="hero-tab__mediaCard">
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From: <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                    </ul>
 
-                        <div class="ht-1-carousel hero-tab-carousel">
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                    </div>
 
-                            @foreach($feature_products as $key=>$prod)
-                            @include('includes.product.slider-product')
-                            @endforeach
-                            @if(count($feature_products)<6)
-                            @foreach($feature_products as $key=>$prod)
-                            @include('includes.product.slider-product')
-                            @endforeach
-                            @endif
+                    <div class="ht-1-carousel-logo hero-tab-carousel">
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="tab-pane active" id="ht-2">
+                    <ul class="hero-tab__mediaCard">
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From: <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                    </ul>
 
-                        </div>
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="ht-1-carousel-logo hero-tab-carousel">
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ht-4">
+                    <ul class="hero-tab__mediaCard">
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From: <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="ht-1-carousel-logo hero-tab-carousel">
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ht-5">
+                    <ul class="hero-tab__mediaCard">
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From: <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="ht-1-carousel-logo hero-tab-carousel">
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ht-6">
+                    <ul class="hero-tab__mediaCard">
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From: <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Office Furniture</h3>
+                                <p>Jerry Together With Jerry's</p>
+                                <h4>From <span>$18.50</span></h4>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                        <a href="#" class="card">
+                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
+                            <div class="card-body">
+                                <h3>Davern Cottage Bed White/Oak</h3>
+                                <h4>$180.0</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="ht-1-carousel-logo hero-tab-carousel">
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
+                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- Tranding Item Area End -->
-@endif
 
 
 
@@ -163,7 +589,7 @@
 <!-- Banner Area One Start -->
 @endif
 
-<section id="extraData" style="display: none;">
+<section id="extraData">
     <div class="text-center">
         <img src="{{asset('assets/images/'.$gs->loader)}}">
     </div>

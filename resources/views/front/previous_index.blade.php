@@ -102,7 +102,7 @@
 					<div class="col-lg-12 remove-padding">
 						<div class="trending-item-slider">
 							@foreach($feature_products as $prod)
-								@include('includes.product.slider-product')
+								@include('includes.product.previous_slider-product')
 							@endforeach
 						</div>
 					</div>
