@@ -154,10 +154,30 @@ class FrontendController extends Controller
         $sliders = DB::table('sliders')->get();
         $top_small_banners = DB::table('banners')->where('type', '=', 'TopSmall')->get();
         $ps = DB::table('pagesettings')->find(1);
+
+
+        $services = DB::table('services')->where('user_id', '=', 0)->get();
+        $bottom_small_banners = DB::table('banners')->where('type', '=', 'BottomSmall')->get();
+        $large_banners = DB::table('banners')->where('type', '=', 'Large')->get();
+        $reviews = DB::table('reviews')->get();
+        $ps = DB::table('pagesettings')->find(1);
+        $partners = DB::table('partners')->get();
+        $selectable = ['id', 'user_id', 'name', 'slug', 'features', 'colors', 'thumbnail', 'price', 'previous_price', 'attributes', 'size', 'size_price', 'discount_date'];
+        $discount_products = Product::where('is_discount', '=', 1)->where('status', '=', 1)->orderBy('id', 'desc')->take(8)->get();
+        $best_products = Product::where('best', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(6)->get();
+        $top_products = Product::where('top', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get();;
+        $big_products = Product::where('big', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(6)->get();;
+        $hot_products = Product::where('hot', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
+        $latest_products = Product::where('latest', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
+        $trending_products = Product::where('trending', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
+        $sale_products = Product::where('sale', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(9)->get();
+
         $feature_products = Product::where('featured', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get();
 
 
-        return view('front.index', compact('ps', 'sliders', 'top_small_banners', 'feature_products'));
+        return view('front.index', get_defined_vars()
+//            compact('ps', 'sliders', 'top_small_banners', 'feature_products')
+        );
     }
 
     private function code_image()

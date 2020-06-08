@@ -21,14 +21,14 @@
 						</div>
 					</div>
 					<div class="col-lg-3 remove-padding d-none d-lg-block">
-						<div class="aside">
+						<divg class="aside">
 							<a class="banner-effect mb-10" href="{{ $ps->best_seller_banner_link }}">
 								<img src="{{asset('assets/images/'.$ps->best_seller_banner)}}" alt="">
 							</a>
 							<a class="banner-effect" href="{{ $ps->best_seller_banner_link1 }}">
 								<img src="{{asset('assets/images/'.$ps->best_seller_banner1)}}" alt="">
 							</a>
-						</div>
+						</divg>
 					</div>
 				</div>
 			</div>

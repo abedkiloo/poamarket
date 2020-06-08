@@ -65,9 +65,6 @@
 @endif
 
 
-
-
-
 @if($ps->featured_category == 1)
 
 {{-- Slider buttom Category Start --}}
@@ -108,503 +105,441 @@
 
 <div class="container mb-5 pb-xl-2">
     <div class="hero-tab-wrapper primary-theme d-sm-flex">
+
         <div class="hero-tab">
-            <div class="hero-tab__label">
-                <h2>Living room</h2>
-            </div>
+
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-1">
-                        <img src="assets/img/ht-1.png" alt="">
-                        Living room lighting
+                       {{ $langg->lang27 }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center active" data-toggle="tab" href="#ht-2">
-                        <img src="assets/img/ht-2.png" alt="">
-                        Sofas & Tables
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-2">
+
+                        {{ $langg->lang244 }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-3">
-                        <img src="assets/img/ht-3.png" alt="">
-                        Coffee & side tables
+
+                        {{ $langg->lang28 }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-4">
-                        <img src="assets/img/ht-4.png" alt="">
-                        Tv & Media Furniture
+
+                        {{ $langg->lang29 }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-5">
-                        <img src="assets/img/ht-5.png" alt="">
-                        Living room Storage
+
+                        {{ $langg->lang30 }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-6">
-                        <img src="assets/img/ht-6.png" alt="">
-                        Flowerpot Room
+
+                        {{ $langg->lang31 }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-7">
+
+                        {{ $langg->lang32 }}
+                    </a>
+                </li> <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-8">
+
+                        {{ $langg->lang33 }}
+                    </a>
+                </li>
+
             </ul>
         </div>
         <div class="hero-tabContent">
             <div class="tab-content">
-                <div class="tab-pane" id="ht-1">
-                    <ul class="hero-tab__mediaCard">
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From: <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                    </ul>
-
+                <div class="tab-pane active" id="ht-1">
                     <div class="ht-1-carousel hero-tab-carousel">
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                    </div>
+                        @foreach($best_products as $prod)
 
-                    <div class="ht-1-carousel-logo hero-tab-carousel">
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane active" id="ht-2">
-                    <ul class="hero-tab__mediaCard">
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From: <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                    </ul>
-
+                <div class="tab-pane " id="ht-2">
                     <div class="ht-1-carousel hero-tab-carousel">
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                    </div>
+                        @foreach($top_products as $prod)
 
-                    <div class="ht-1-carousel-logo hero-tab-carousel">
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane" id="ht-4">
-                    <ul class="hero-tab__mediaCard">
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From: <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                    </ul>
-
+                <div class="tab-pane " id="ht-3">
                     <div class="ht-1-carousel hero-tab-carousel">
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                    </div>
+                        @foreach($big_products as $prod)
 
-                    <div class="ht-1-carousel-logo hero-tab-carousel">
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane" id="ht-5">
-                    <ul class="hero-tab__mediaCard">
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From: <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                    </ul>
-
+                <div class="tab-pane " id="ht-4">
                     <div class="ht-1-carousel hero-tab-carousel">
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                    </div>
+                        @foreach($hot_products as $prod)
 
-                    <div class="ht-1-carousel-logo hero-tab-carousel">
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane" id="ht-6">
-                    <ul class="hero-tab__mediaCard">
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From: <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Office Furniture</h3>
-                                <p>Jerry Together With Jerry's</p>
-                                <h4>From <span>$18.50</span></h4>
-                            </a>
-                        </li>
-                    </ul>
-
+                <div class="tab-pane " id="ht-5">
                     <div class="ht-1-carousel hero-tab-carousel">
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Roma Tufted Wingback Bed (Queen) - DOrel Asia</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Wilmington Sleigh Headboard Reddish Brown</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                        <a href="#" class="card">
-                            <img class="card-img" src="assets/img/product-img.jpg" alt="">
-                            <div class="card-body">
-                                <h3>Davern Cottage Bed White/Oak</h3>
-                                <h4>$180.0</h4>
-                            </div>
-                        </a>
-                    </div>
+                        @foreach($latest_products as $prod)
 
-                    <div class="ht-1-carousel-logo hero-tab-carousel">
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-1.png" alt=""></a></div>
-                        <div><a href="#"><img src="assets/img/company-logo-2.png" alt=""></a></div>
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
                     </div>
                 </div>
+                <div class="tab-pane " id="ht-6">
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        @foreach($trending_products as $prod)
+
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="tab-pane " id="ht-7">
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        @foreach($sale_products as $prod)
+
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="tab-pane " id="ht-8">
+                    <div class="ht-1-carousel hero-tab-carousel">
+                        @foreach($sale_products as $prod)
+
+                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                            <img class="card-img"
+                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+
+                            <div class="card-body">
+                                <h3>{{$prod->name}}</h3>
+
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                                    </div>
+                                </div>
+                                <h4 class="price">{{ $prod->showPrice() }}</h4>
+                                <div class="item-cart-area">
+                                    @if($prod->product_type == "affiliate")
+                                    <span class="add-to-cart-btn affilate-btn"
+                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                                    @else
+                                    @if($prod->emptyStock())
+                                    <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                                    @else
+                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                                    @endif
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-@if($ps->small_banner == 1)
-
-<!-- Banner Area One Start -->
-<section class="banner-section">
-    <div class="container">
-        @foreach($top_small_banners->chunk(2) as $chunk)
-        <div class="row">
-            @foreach($chunk as $img)
-            <div class="col-lg-6 remove-padding">
-                <div class="left">
-                    <a class="banner-effect" href="{{ $img->link }}" target="_blank">
-                        <img src="{{asset('assets/images/banners/'.$img->photo)}}" alt="">
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endforeach
-    </div>
-</section>
-<!-- Banner Area One Start -->
-@endif
-
-<section id="extraData">
-    <div class="text-center">
-        <img src="{{asset('assets/images/'.$gs->loader)}}">
-    </div>
-</section>
-
-
 @endsection
-@section('scripts')
-<script>
-    $(window).on('load', function () {
-        setTimeout(function () {
-            $('#extraData').load('{{route('front.extraIndex')}}');
-        }, 500);
 
-    });
-
-</script>
-@endsection

@@ -1010,16 +1010,8 @@
 
 <script type="text/javascript">
     var mainurl = "{{url('/')}}";
-    var gs = {
-    !!json_encode($gs)
-    !!
-    }
-    ;
-    var langg = {
-    !!json_encode($langg)
-    !!
-    }
-    ;
+    var gs = {!!json_encode($gs)!!};
+    var langg = {!!json_encode($langg)!!};
 </script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
