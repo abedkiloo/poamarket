@@ -6,8 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>sMarket - Blog</title>
 
+    @if(isset($page->meta_tag) && isset($page->meta_description))
+    <meta name="keywords" content="{{ $page->meta_tag }}">
+    <meta name="description" content="{{ $page->meta_description }}">
+    <title>{{$gs->title}}</title>
+    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
+    <meta name="keywords" content="{{ $blog->meta_tag }}">
+    <meta name="description" content="{{ $blog->meta_description }}">
+    <title>{{$gs->title}}</title>
+    @elseif(isset($productt))
+    <meta name="keywords" content="{{ !empty($productt->meta_tag) ? implode(',', $productt->meta_tag ): '' }}">
+    <meta name="description"
+          content="{{ $productt->meta_description != null ? $productt->meta_description : strip_tags($productt->description) }}">
+    <meta property="og:title" content="{{$productt->name}}"/>
+    <meta property="og:description"
+          content="{{ $productt->meta_description != null ? $productt->meta_description : strip_tags($productt->description) }}"/>
+    <meta property="og:image" content="{{asset('assets/images/thumbnails/'.$productt->thumbnail)}}"/>
+    <meta name="author" content="GeniusOcean">
+    <title>{{substr($productt->name, 0,11)."-"}}{{$gs->title}}</title>
+    @else
+    <meta name="keywords" content="{{ $seo->meta_keys }}">
+    <meta name="author" content="GeniusOcean">
+    <title>{{$gs->title}}</title>
+    @endif
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -65,7 +87,7 @@
                     <li>
                         <a href="{{ route('front.cart') }}">
                             <img src="assets/img/cart-icon.png" alt="">
-                            <p>Cart</p>
+                            <p>{{ Session::has('cart') ? count(Session::get('cart')->items) : '0' }}</p>
                         </a>
                     </li>
                 </ul>
