@@ -157,3 +157,96 @@
 
  
 }
+
+
+/*Star Rating End*/
+
+.ratings {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #b1b1b1;
+    overflow: hidden;
+}
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #ff5500;
+}
+.empty-stars:before, .full-stars:before {
+    content:"\2605\2605\2605\2605\2605";
+    font-size: 14px;
+}
+.empty-stars:before {
+    -webkit-text-stroke: 1px #ddd;
+    color:#ddd;
+}
+.full-stars:before {
+    -webkit-text-stroke: 1px #ff5500;
+}
+/* Webkit-text-stroke is not supported on firefox or IE */
+
+/* Firefox */
+@-moz-document url-prefix() {
+    .full-stars {
+        color: #ff5500;
+    }
+}
+.full-stars {
+    color: #ff5500;
+}
+.edit-info-area .upload-img .img img {
+    /* border-radius: 50%; */
+    width: 100%;
+    height: 100%;
+}
+.login-btn {
+    color: #fff !important;
+    cursor: pointer;
+    background-color: #ff5500;
+    border-color: #ff5500;
+    padding: 8px 12px;
+}
+/*Star Rating End*/
+
+/*Comment Reply Area*/
+
+.replay-area {
+    display: none;
+}
+.hidden {
+    display: none !important;
+}
+
+.item .info .name {
+    height: 60px;
+}
+.item .add-to-cart-btn {
+    font-size: 12px;
+    padding: 1px 0px;
+    width: 120px;
+    margin: 3px auto;
+}
+.item .info .name {
+    font-size: 13px;
+    line-height: 18px;
+}
+.flash-deals .flas-deal-slider .item .deal-counter span {
+    font-size: 18px;
+    line-height: 22px;
+}
+.item .item-img .extra-list ul li span {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a {
+
+    margin: 3px;
+
+}

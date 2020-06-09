@@ -1,4 +1,4 @@
-@extends('layouts.alternative_front')
+@extends('layouts.index_front')
 
 @section('content')
 
@@ -101,84 +101,111 @@
 {{-- Slider buttom banner End --}}
 
 @endif
+<div id="test_loader">
+<div class="hero-tabContent">
+    <div class="tab-content">
+        <div class="tab-pane active" id="ht-1">
+            <div class="ht-1-carousel hero-tab-carousel">
+                @foreach($trending_products as $prod)
 
-@if($ps->featured == 1)
-<!-- Trending Item Area Start -->
-<section>
-    <div class="container mb-5 pb-xl-2">
-        <div class="hero-tab-wrapper primary-theme d-sm-flex">
-            <div class="hero-tab">
-                <div class="hero-tab__label">
-                    <h2>Trending</h2>
-                </div>
-            </div>
-            <div class="hero-tabContent">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="ht-2">
+                <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                    <img class="card-img"
+                         src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}"
+                         alt="">
 
-                        <div class="ht-1-carousel hero-tab-carousel">
+                    <div class="card-body">
+                        <h3>{{$prod->name}}</h3>
 
-                            @foreach($feature_products as $key=>$prod)
-                            @include('includes.product.slider-product')
-                            @endforeach
-                            @if(count($feature_products)<6)
-                            @foreach($feature_products as $key=>$prod)
-                            @include('includes.product.slider-product')
-                            @endforeach
+                        <div class="stars">
+                            <div class="ratings">
+                                <div class="empty-stars"></div>
+                                <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                            </div>
+                        </div>
+                        <h4 class="price">{{ $prod->showPrice() }}</h4>
+                        <div class="item-cart-area">
+                            @if($prod->product_type == "affiliate")
+                            <span class="add-to-cart-btn affilate-btn"
+                                  data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                            @else
+                            @if($prod->emptyStock())
+                            <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                            @else
+                            <span class="add-to-cart add-to-cart-btn"
+                                  data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                            <span class="add-to-cart-quick add-to-cart-btn"
+                                  data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
                             @endif
-
+                            @endif
                         </div>
                     </div>
-                </div>
+
+
+                </a>
+                @endforeach
             </div>
         </div>
     </div>
-</section>
-
-<!-- Tranding Item Area End -->
-@endif
-
-
-
-@if($ps->small_banner == 1)
-
-<!-- Banner Area One Start -->
-<section class="banner-section">
-    <div class="container">
-        @foreach($top_small_banners->chunk(2) as $chunk)
-        <div class="row">
-            @foreach($chunk as $img)
-            <div class="col-lg-6 remove-padding">
-                <div class="left">
-                    <a class="banner-effect" href="{{ $img->link }}" target="_blank">
-                        <img src="{{asset('assets/images/banners/'.$img->photo)}}" alt="">
-                    </a>
+</div>
+</div>
+@foreach($categories as $key=>$category)
+@php
+$subcats=App\Models\Subcategory::where('category_id',$category->id)->get()
+@endphp
+<div class="container mb-5 pb-xl-2">
+    @if($key%2==0)
+    <div class="hero-tab-wrapper primary-theme d-sm-flex">
+        @else
+        <div class="hero-tab-wrapper flower-theme d-sm-flex">
+            @endif
+            <div class="hero-tab">
+                <div class="hero-tab__label">
+                    <h2><a href="{{route('front.category',[$category->slug,$subcats->first()['slug']])}}">{{$category->name}}</a>
+                    </h2>
                 </div>
+                <ul class="nav">
+
+                    <li class="nav-item">
+                        @foreach($subcats as $subcat)
+
+                        <a class="nav-link d-flex align-items-center" data-toggle="tab"
+                           href=""
+                           onclick="load_cat_data('{{$category->slug}}','{{$subcat->slug}}');">
+                            {{$subcat->name}}
+                        </a>
+                        @endforeach
+                    </li>
+
+                </ul>
             </div>
-            @endforeach
+            <div  id="content_cat_{{$category->slug}}">
+
+
+            </div>
         </div>
-        @endforeach
     </div>
-</section>
-<!-- Banner Area One Start -->
-@endif
-
-<section id="extraData" style="display: none;">
-    <div class="text-center">
-        <img src="{{asset('assets/images/'.$gs->loader)}}">
-    </div>
-</section>
-
-
+</div>
+@endforeach
 @endsection
 @section('scripts')
 <script>
-    $(window).on('load', function () {
-        setTimeout(function () {
-            $('#extraData').load('{{route('front.extraIndex')}}');
-        }, 500);
-
-    });
-
+    function load_cat_data(param, param2) {
+        // $("#content_cat_"+param).load("{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2))
+        $.ajax({
+            url: "{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2),
+            success: function (response) {
+                $("#content_cat_" + param).html(response)
+                console.log(response)
+            }
+        })
+    }
 </script>
 @endsection

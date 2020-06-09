@@ -564,16 +564,16 @@ tabsAction.setup();
         $('#product-showcase .item').addClass('grid-group-item');
       });
 
-      // toggle action class on listView and gridView
-      var container = document.getElementById("btnContainer");
-      var btns = container.getElementsByClassName("product-showcase__btn");
-      for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-          var current = document.getElementsByClassName("active-grid");
-          current[0].className = current[0].className.replace(" active-grid", "");
-          this.className += " active-grid";
-        });
-      }
+      // // toggle action class on listView and gridView
+      // var container = document.getElementById("btnContainer");
+      // var btns = container.getElementsByClassName("product-showcase__btn");
+      // for (var i = 0; i < btns.length; i++) {
+      //   btns[i].addEventListener("click", function() {
+      //     var current = document.getElementsByClassName("active-grid");
+      //     current[0].className = current[0].className.replace(" active-grid", "");
+      //     this.className += " active-grid";
+      //   });
+      // }
     });
 
 
