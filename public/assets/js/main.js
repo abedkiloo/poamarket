@@ -1,5 +1,7 @@
 (function ($) {
 	"use strict";
+      
+  var w = window.innerWidth;
 
     jQuery(document).ready(function($){
       $(".embed-responsive iframe").addClass("embed-responsive-item");
@@ -20,8 +22,6 @@
         $('.menu-open').toggleClass('toggle');  
                 
       });
-      
-
      // Hero slider js
      $(".site-hero-slider-aera").owlCarousel({
       items:5,
@@ -48,6 +48,26 @@
       
     
   });
+  var $product_slider = $('.all-slider');
+    $product_slider.owlCarousel({
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        margin: 0,
+        autoplay: false,
+        items: 4,
+        autoplayTimeout: 6000,
+        smartSpeed: 1000,
+        responsive: {
+            0: {
+                items: 4
+            },
+            768: {
+                items: 4
+            }
+        }
+    });
       
 
     if($(window).width() <= 400){
@@ -124,6 +144,47 @@
           1000:{
             items:1,
           }
+        }
+      });
+
+      $(".hot-and-new-item-slider").owlCarousel({
+        items: 1,
+        autoplay: true,
+        margin: 0,
+        loop: true,
+        dots: true,
+        nav: true,
+        center: false,
+        autoplayHoverPause: true,
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        smartSpeed: 800,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            414: {
+                items: 1
+            }
+        }
+      });
+
+      $(".trending-item-slider").owlCarousel({
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        margin: 0,
+        autoplay: false,
+        items: 4,
+        autoplayTimeout: 6000,
+        smartSpeed: 1000,
+        responsive: {
+            0: {
+                items: 4
+            },
+            768: {
+                items: 4
+            }
         }
       });
 
@@ -286,6 +347,11 @@
         fade: true
       })
 
+      //   magnific popup activation
+    $('.video-play-btn').magnificPopup({
+      type: 'video'
+  });
+  
       $('.product-slider__zoom').magnificPopup({
         type: 'image',
         closeOnContentClick: true,
@@ -510,6 +576,23 @@ tabsAction.setup();
       }
     });
 
+
+    if(w <= 991 )
+
+{
+
+  $(document).on('mouseover', function(e) 
+  {
+      var container = $(".xzoom-preview");
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) 
+      {
+        $(".xzoom-preview").css('display','none');
+      }
+  });
+
+}
 
 }(jQuery));	
 

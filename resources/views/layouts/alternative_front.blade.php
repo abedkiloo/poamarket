@@ -793,7 +793,28 @@
 
 
 
+<!-- Product Quick View Modal -->
 
+<div class="modal fade" id="quickview" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog quickview-modal modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="submit-loader">
+            <img src="{{asset('assets/images/'.$gs->loader)}}" alt="">
+        </div>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container quick-view-modal">
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Product Quick View Modal -->
 <script type="text/javascript">
     var mainurl = "{{url('/')}}";
     var gs      = {!! json_encode($gs) !!};
@@ -811,7 +832,10 @@
 <script src="{{asset('assets/js/jquery.magnific-popup.min.j')}}s"></script>
 <script src="{{asset('assets/js/bootstrap-select.js')}}"></script>
 <script src="{{asset('assets/js/jquery.nice-select.js')}}"></script>
+<script src="{{asset('assets/js/xzoom.min.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('assets/js/setup.js')}}"></script>
+<script src="{{asset('assets/js/toastr.js')}}"></script>
 
 
 

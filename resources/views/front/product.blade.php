@@ -1,32 +1,29 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 
 @section('content')
 
-<div class="breadcrumb-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="pages">
-
-          <li><a href="{{route('front.index')}}">{{ $langg->lang17 }}</a></li>
-          <li><a href="{{route('front.category',$productt->category->slug)}}">{{$productt->category->name}}</a></li>
-          @if($productt->subcategory_id != null)
-          <li><a
-              href="{{ route('front.subcat',['slug1' => $productt->category->slug, 'slug2' => $productt->subcategory->slug]) }}">{{$productt->subcategory->name}}</a>
-          </li>
-          @endif
-          @if($productt->childcategory_id != null)
-          <li><a
-              href="{{ route('front.childcat',['slug1' => $productt->category->slug, 'slug2' => $productt->subcategory->slug, 'slug3' => $productt->childcategory->slug]) }}">{{$productt->childcategory->name}}</a>
-          </li>
-          @endif
-          <li><a href="{{ route('front.product', $productt->slug) }}">{{ $productt->name }}</a>
-
-        </ul>
-      </div>
-    </div>
-  </div>
+<!-- Breadcrumb Area Start -->
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-style">
+      <li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="fas fa-home"></i> {{ $langg->lang17 }}</a></li>
+      <li class="breadcrumb-item"><a href="{{route('front.category',$productt->category->slug)}}"> {{$productt->category->name}}</a></li>
+      @if($productt->subcategory_id != null)
+      <li class="breadcrumb-item">
+        <a href="{{ route('front.subcat',['slug1' => $productt->category->slug, 'slug2' => $productt->subcategory->slug]) }}">{{$productt->subcategory->name}}</a>
+      </li>
+      @endif
+      @if($productt->childcategory_id != null)
+      <li class="breadcrumb-item">
+        <a href="{{ route('front.childcat',['slug1' => $productt->category->slug, 'slug2' => $productt->subcategory->slug, 'slug3' => $productt->childcategory->slug]) }}">{{$productt->childcategory->name}}</a>
+      </li>
+      @endif
+      <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('front.product', $productt->slug) }}">{{ $productt->name }}</a></li>
+    </ol>
+  </nav>
 </div>
+<!-- Breadcrumb Area End -->
+
 
 <!-- Product Details Area Start -->
 <section class="product-details-page">
@@ -41,10 +38,10 @@
               <img class="xzoom5" id="xzoom-magnific" src="{{filter_var($productt->photo, FILTER_VALIDATE_URL) ?$productt->photo:asset('assets/images/products/'.$productt->photo)}}" xoriginal="{{filter_var($productt->photo, FILTER_VALIDATE_URL) ?$productt->photo:asset('assets/images/products/'.$productt->photo)}}" />
               <div class="xzoom-thumbs">
 
-                <div class="all-slider">
+                <div class="all-slider owl-carousel owl-theme">
 
                     <a href="{{filter_var($productt->photo, FILTER_VALIDATE_URL) ?$productt->photo:asset('assets/images/products/'.$productt->photo)}}">
-                  <img class="xzoom-gallery5" width="80" src="{{filter_var($productt->photo, FILTER_VALIDATE_URL) ?$productt->photo:asset('assets/images/products/'.$productt->photo)}}" title="The description goes here">
+                      <img class="xzoom-gallery5" width="80" src="{{filter_var($productt->photo, FILTER_VALIDATE_URL) ?$productt->photo:asset('assets/images/products/'.$productt->photo)}}" title="The description goes here">
                     </a>
 
                 @foreach($productt->galleries as $gal)
@@ -81,7 +78,7 @@
                       @else
                       <li class="product-isstook">
                         <p>
-                          <i class="icofont-check-circled"></i>
+                          <i class="far fa-check-circle"></i>
                           {{ $gs->show_stock == 0 ? '' : $productt->stock }} {{ $langg->lang79 }}
                         </p>
                       </li>
@@ -98,7 +95,7 @@
                       </li>
                   @if($productt->product_condition != 0)
                      <li>
-                       <div class="{{ $productt->product_condition == 2 ? 'mybadge' : 'mybadge1' }}">
+                       <div class="{{ $productt->product_condition == 2 ? 'badge badge-success' : 'badge badge-danger' }}">
                         {{ $productt->product_condition == 2 ? 'New' : 'Used' }}
                        </div>
                      </li>
@@ -223,7 +220,7 @@
                           <ul>
                             <li>
                               <span class="qtminus">
-                                <i class="icofont-minus"></i>
+                                <i class="far fa-minus"></i>
                               </span>
                             </li>
                             <li>
@@ -231,7 +228,7 @@
                             </li>
                             <li>
                               <span class="qtplus">
-                                <i class="icofont-plus"></i>
+                                <i class="far fa-plus"></i>
                               </span>
                             </li>
                           </ul>
@@ -307,7 +304,7 @@
                       @if(Auth::guard('web')->check())
                       <li class="favorite">
                         <a href="javascript:;" class="add-to-wish"
-                          data-href="{{ route('user-wishlist-add',$productt->id) }}"><i class="icofont-heart-alt"></i></a>
+                          data-href="{{ route('user-wishlist-add',$productt->id) }}"><i class="fas fa-heart"></i></a>
                       </li>
                       @else
                       <li class="favorite">
@@ -317,7 +314,7 @@
                       @endif
                       <li class="compare">
                         <a href="javascript:;" class="add-to-compare"
-                          data-href="{{ route('product.compare.add',$productt->id) }}"><i class="icofont-exchange"></i></a>
+                          data-href="{{ route('product.compare.add',$productt->id) }}"><i class="far fa-exchange-alt"></i></a>
                       </li>
                     </ul>
                   </div>
@@ -388,24 +385,31 @@
               <div class="col-lg-12">
                   <div id="product-details-tab">
                     <div class="top-menu-area">
-                      <ul class="tab-menu">
-                        <li><a href="#tabs-1">{{ $langg->lang92 }}</a></li>
-                        <li><a href="#tabs-2">{{ $langg->lang93 }}</a></li>
-                        <li><a href="#tabs-3">{{ $langg->lang94 }}({{ count($productt->ratings) }})</a></li>
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="">
+                          <a class="active" id="tabs-1-tab" data-toggle="tab" href="#tabs-1" role="tab" aria-controls="tabs-1" aria-selected="true">{{ $langg->lang92 }}</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="" id="tabs-2-tab" data-toggle="tab" href="#tabs-2" role="tab" aria-controls="tabs-2" aria-selected="false">{{ $langg->lang93 }}</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="" id="tabs-3-tab" data-toggle="tab" href="#tabs-3" role="tab" aria-controls="tabs-3" aria-selected="false">{{ $langg->lang94 }}({{ count($productt->ratings) }})</a>
+                        </li>
                         @if($gs->is_comment == 1)
-                        <li><a href="#tabs-4">{{ $langg->lang95 }}(<span
-                              id="comment_count">{{ count($productt->comments) }}</span>)</a></li>
+                        <li class="nav-item">
+                          <a class="" id="tabs-4-tab" data-toggle="tab" href="#tabs-4" role="tab" aria-controls="tabs-4" aria-selected="false">{{ $langg->lang95 }}(<span id="comment_count">{{ count($productt->comments) }}</span>)</a>
+                        </li>
                         @endif
                       </ul>
                     </div>
-                    <div class="tab-content-wrapper">
-                      <div id="tabs-1" class="tab-content-area">
+                    <div class="tab-content-wrapper tab-content" id="myTabContent">
+                      <div id="tabs-1" class="tab-content-area tab-pane fade show active" role="tabpanel">
                         <p>{!! $productt->details !!}</p>
                       </div>
-                      <div id="tabs-2" class="tab-content-area">
+                      <div id="tabs-2" class="tab-content-area tab-pane fade" role="tabpanel">
                         <p>{!! $productt->policy !!}</p>
                       </div>
-                      <div id="tabs-3" class="tab-content-area">
+                      <div id="tabs-3" class="tab-content-area tab-pane fade" role="tabpanel">
                         <div class="heading-area">
                           <h4 class="title">
                             {{ $langg->lang96 }}
@@ -525,7 +529,7 @@
                         </div>
                       </div>
                       @if($gs->is_comment == 1)
-                      <div id="tabs-4" class="tab-content-area">
+                      <div id="tabs-4" class="tab-content-area tab-pane fade" role="tabpanel">
                         <div id="comment-area">
 
                           @include('includes.comment-replies')
@@ -720,21 +724,19 @@
                 {{ $langg->lang245 }}
             </h2>
         </div>
-                        <div class="hot-and-new-item-slider">
+        <div class="hot-and-new-item-slider owl-carousel owl-theme">
 
-                          @foreach($vendors->chunk(3) as $chunk)
-                            <div class="item-slide">
-                              <ul class="item-list">
-                                @foreach($chunk as $prod)
-                                  @include('includes.product.list-product')
-                                @endforeach
-                              </ul>
-                            </div>
-                          @endforeach
-
-                        </div>
-
-    </div>
+          @foreach($vendors->chunk(3) as $chunk)
+            <div class="item">
+              <ul class="item-list">
+                @foreach($chunk as $prod)
+                  @include('includes.product.list-product')
+                @endforeach
+              </ul>
+            </div>
+          @endforeach
+        </div>
+      </div>
 
 
 
@@ -752,7 +754,7 @@
 <div class="trending">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 remove-padding">
+      <div class="col-lg-12 remove-padding mt-4">
         <div class="section-top">
           <h2 class="section-title">
             {{ $langg->lang216 }}
@@ -762,7 +764,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 remove-padding">
-        <div class="trending-item-slider">
+        <div class="trending-item-slider owl-carousel owl-theme">
           @foreach($productt->category->products()->where('status','=',1)->where('id','!=',$productt->id)->take(8)->get()
           as $prod)
           @include('includes.product.slider-product')

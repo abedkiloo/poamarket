@@ -45,6 +45,7 @@
     41 => 'Intervention\\Image\\ImageServiceProvider',
     42 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
     43 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    44 => 'KingFlamez\\Rave\\RaveServiceProvider',
   ),
   'eager' => 
   array (
@@ -76,6 +77,7 @@
     25 => 'Intervention\\Image\\ImageServiceProvider',
     26 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
     27 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    28 => 'KingFlamez\\Rave\\RaveServiceProvider',
   ),
   'deferred' => 
   array (

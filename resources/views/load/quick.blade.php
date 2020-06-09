@@ -5,7 +5,7 @@
     <img class="quick-zoom" id="xzoom-magnific1" src="{{filter_var($product->photo, FILTER_VALIDATE_URL) ?$product->photo:asset('assets/images/products/'.$product->photo)}}" xoriginal="{{filter_var($product->photo, FILTER_VALIDATE_URL) ?$product->photo:asset('assets/images/products/'.$product->photo)}}" />
     <div class="xzoom-thumbs">
 
-      <div class="quick-all-slider">
+      <div class="quick-all-slider owl-carousel owl-theme">
 
           <a href="{{filter_var($product->photo, FILTER_VALIDATE_URL) ?$product->photo:asset('assets/images/products/'.$product->photo)}}">
         <img class="quick-zoom-gallery" width="80" src="{{filter_var($product->photo, FILTER_VALIDATE_URL) ?$product->photo:asset('assets/images/products/'.$product->photo)}}" title="The description goes here">
@@ -203,7 +203,7 @@
                     <ul>
                         <li>
                 <span class="modal-minus">
-                  <i class="icofont-minus"></i>
+                  <i class="far fa-minus"></i>
                 </span>
                         </li>
                         <li>
@@ -211,7 +211,7 @@
                         </li>
                         <li>
                 <span class="modal-plus">
-                  <i class="icofont-plus"></i>
+                  <i class="far fa-plus"></i>
                 </span>
                         </li>
                     </ul>
@@ -287,15 +287,15 @@
               @endif
               @if(Auth::guard('web')->check())
                   <li class="favorite">
-                      <a href="javascript:;" class="add-to-wish" data-href="{{ route('user-wishlist-add',$product->id) }}"><i class="icofont-heart-alt"></i></a>
+                      <a href="javascript:;" class="add-to-wish" data-href="{{ route('user-wishlist-add',$product->id) }}"><i class="fas fa-heart"></i></a>
                   </li>
               @else
                   <li class="favorite">
-                      <a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"><i class="icofont-heart-alt"></i></a>
+                      <a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"><i class="fas fa-heart"></i></a>
                   </li>
               @endif
               <li class="compare">
-                  <a href="javascript:;" class="add-to-compare" data-href="{{ route('product.compare.add',$product->id) }}"><i class="icofont-exchange"></i></a>
+                  <a href="javascript:;" class="add-to-compare" data-href="{{ route('product.compare.add',$product->id) }}"><i class="far fa-exchange-alt"></i></a>
               </li>
           </ul>
         @if($product->ship != null)
