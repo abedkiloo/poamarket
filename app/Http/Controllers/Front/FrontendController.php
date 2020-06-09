@@ -6,6 +6,7 @@ use App\Classes\GeniusMailer;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Category;
 use App\Models\Counter;
 use App\Models\Generalsetting;
 use App\Models\Order;
@@ -174,6 +175,9 @@ class FrontendController extends Controller
 
         $feature_products = Product::where('featured', '=', 1)->where('status', '=', 1)->select($selectable)->orderBy('id', 'desc')->take(8)->get();
 
+
+
+        $categories=Category::all();
 
         return view('front.index', get_defined_vars()
 //            compact('ps', 'sliders', 'top_small_banners', 'feature_products')

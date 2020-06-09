@@ -101,445 +101,111 @@
 {{-- Slider buttom banner End --}}
 
 @endif
+<div id="test_loader">
+<div class="hero-tabContent">
+    <div class="tab-content">
+        <div class="tab-pane active" id="ht-1">
+            <div class="ht-1-carousel hero-tab-carousel">
+                @foreach($trending_products as $prod)
+
+                <a href="{{ route('front.product', $prod->slug) }}" class="card">
+                    <img class="card-img"
+                         src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}"
+                         alt="">
+
+                    <div class="card-body">
+                        <h3>{{$prod->name}}</h3>
+
+                        <div class="stars">
+                            <div class="ratings">
+                                <div class="empty-stars"></div>
+                                <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+                            </div>
+                        </div>
+                        <h4 class="price">{{ $prod->showPrice() }}</h4>
+                        <div class="item-cart-area">
+                            @if($prod->product_type == "affiliate")
+                            <span class="add-to-cart-btn affilate-btn"
+                                  data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
+																	{{ $langg->lang251 }}
+																</span>
+                            @else
+                            @if($prod->emptyStock())
+                            <span class="add-to-cart-btn cart-out-of-stock">
+																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
+																</span>
+                            @else
+                            <span class="add-to-cart add-to-cart-btn"
+                                  data-href="{{ route('product.cart.add',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
+																</span>
+                            <span class="add-to-cart-quick add-to-cart-btn"
+                                  data-href="{{ route('product.cart.quickadd',$prod->id) }}">
+																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
+																</span>
+                            @endif
+                            @endif
+                        </div>
+                    </div>
 
 
-<div class="container mb-5 pb-xl-2">
-    <div class="hero-tab-wrapper primary-theme d-sm-flex">
-
-        <div class="hero-tab">
-
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-1">
-                       {{ $langg->lang27 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-2">
-
-                        {{ $langg->lang244 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-3">
-
-                        {{ $langg->lang28 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-4">
-
-                        {{ $langg->lang29 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-5">
-
-                        {{ $langg->lang30 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-6">
-
-                        {{ $langg->lang31 }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-7">
-
-                        {{ $langg->lang32 }}
-                    </a>
-                </li> <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" data-toggle="tab" href="#ht-8">
-
-                        {{ $langg->lang33 }}
-                    </a>
-                </li>
-
-            </ul>
+                </a>
+                @endforeach
+            </div>
         </div>
-        <div class="hero-tabContent">
-            <div class="tab-content">
-                <div class="tab-pane active" id="ht-1">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($best_products as $prod)
+    </div>
+</div>
+</div>
+@foreach($categories as $key=>$category)
+@php
+$subcats=App\Models\Subcategory::where('category_id',$category->id)->get()
+@endphp
+<div class="container mb-5 pb-xl-2">
+    @if($key%2==0)
+    <div class="hero-tab-wrapper primary-theme d-sm-flex">
+        @else
+        <div class="hero-tab-wrapper flower-theme d-sm-flex">
+            @endif
+            <div class="hero-tab">
+                <div class="hero-tab__label">
+                    <h2><a href="{{route('front.category',[$category->slug,$subcats->first()['slug']])}}">{{$category->name}}</a>
+                    </h2>
+                </div>
+                <ul class="nav">
 
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+                    <li class="nav-item">
+                        @foreach($subcats as $subcat)
 
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
+                        <a class="nav-link d-flex align-items-center" data-toggle="tab"
+                           href=""
+                           onclick="load_cat_data('{{$category->slug}}','{{$subcat->slug}}');">
+                            {{$subcat->name}}
                         </a>
                         @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-2">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($top_products as $prod)
+                    </li>
 
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
+                </ul>
+            </div>
+            <div  id="content_cat_{{$category->slug}}">
 
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-3">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($big_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-4">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($hot_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-5">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($latest_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-6">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($trending_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-7">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($sale_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane " id="ht-8">
-                    <div class="ht-1-carousel hero-tab-carousel">
-                        @foreach($sale_products as $prod)
-
-                        <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                            <img class="card-img"
-                                 src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}" alt="">
-
-                            <div class="card-body">
-                                <h3>{{$prod->name}}</h3>
-
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
-                                    </div>
-                                </div>
-                                <h4 class="price">{{ $prod->showPrice() }}</h4>
-                                <div class="item-cart-area">
-                                    @if($prod->product_type == "affiliate")
-                                    <span class="add-to-cart-btn affilate-btn"
-                                          data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                                    @else
-                                    @if($prod->emptyStock())
-                                    <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                                    @else
-                                    <span class="add-to-cart add-to-cart-btn" data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                          data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
 </div>
+@endforeach
 @endsection
-
+@section('scripts')
+<script>
+    function load_cat_data(param, param2) {
+        // $("#content_cat_"+param).load("{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2))
+        $.ajax({
+            url: "{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2),
+            success: function (response) {
+                $("#content_cat_" + param).html(response)
+                console.log(response)
+            }
+        })
+    }
+</script>
+@endsection

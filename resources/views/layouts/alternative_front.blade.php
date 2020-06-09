@@ -121,10 +121,12 @@
                         <li><a href="{{ route('front.faq') }}"><i class="fas fa-blog"></i>{{ $langg->lang19 }}</a></li>
                         @endif
                         @foreach(DB::table('pages')->where('header','=',1)->get() as $data)
-                        <li><a href="{{ route('front.page',$data->slug) }}"><i class="fas fa-blog"></i>{{ $data->title }}</a></li>
+                        <li><a href="{{ route('front.page',$data->slug) }}"><i class="fas fa-blog"></i>{{ $data->title
+                                }}</a></li>
                         @endforeach
                         @if($gs->is_contact == 1)
-                        <li><a href="{{ route('front.contact') }}"><i class="fas fa-blog"></i>{{ $langg->lang20 }}</a></li>
+                        <li><a href="{{ route('front.contact') }}"><i class="fas fa-blog"></i>{{ $langg->lang20 }}</a>
+                        </li>
                         @endif
                         <li>
                             <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal"
@@ -143,22 +145,23 @@
                     @endphp
                     @foreach($categories as $category)
 
-                    <li class="{{count($category->subs) > 0 ? 'dropdown_list':''}} {{ $i >= 15 ? 'rx-child' : '' }}">
+                    <li class="site-megamenu__item {{count($category->subs) > 0 ? 'dropdown_list':''}} {{ $i >= 15 ? 'rx-child' : '' }}">
                         @if(count($category->subs) > 0)
                         <img style="width: 15px;height: 15px"
                              src="{{ asset('assets/images/categories/'.$category->photo) }}" alt="">
 
-                        <span><a href="{{ route('front.category',$category->slug) }}">{{ $category->name }}</a></span>
+                        <a style="color: #0c0c0c" href="{{ route('front.category',$category->slug) }}">{{ $category->name }}</a>
                         @if(count($category->subs) > 0)
-                        <a href="javascript:;">
+                        <a style="color: #0c0c0c" href="javascript:;">
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
                         @endif
 
                         @else
-                        <a href="{{ route('front.category',$category->slug) }}">
+                        <a  style="color: #0c0c0c"  href="{{ route('front.category',$category->slug) }}">
                             <img style="width: 15px;height: 15px"
-                                 src="{{ asset('assets/images/categories/'.$category->photo) }}"> {{ $category->name }}</a>
+                                 src="{{ asset('assets/images/categories/'.$category->photo) }}"> {{ $category->name
+                            }}</a>
 
                         @endif
                         @if(count($category->subs) > 0)
@@ -173,23 +176,44 @@
                         }
                         @endphp
 
-                        <ul class="site-megamenu__listLink {{ $ck == 1 ? 'categories_mega_menu' : 'categories_mega_menu column_1' }}">
-                            @foreach($category->subs as $subcat)
+                        <ul>
+
                             <li>
-                                <a href="{{ route('front.subcat',['slug1' => $subcat->category->slug, 'slug2' => $subcat->slug]) }}">{{$subcat->name}}</a>
-                                @if(count($subcat->childs) > 0)
-                                <div class="categorie_sub_menu">
-                                    <ul>
-                                        @foreach($subcat->childs as $childcat)
-                                        <li>
-                                            <a href="{{ route('front.childcat',['slug1' => $childcat->subcategory->category->slug, 'slug2' => $childcat->subcategory->slug, 'slug3' => $childcat->slug]) }}">{{$childcat->name}}</a>
-                                        </li>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4 pb-5 pb-md-0 d-none d-md-block">
+                                            <div class="site-megamenu__slider">
+                                                <div>
+                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
+                                                </div>
+                                                <div>
+                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
+                                                </div>
+                                                <div>
+                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @foreach($category->subs as $subcat)
+                                        <div class="col-md-4 mb-4 mb-md-0">
+                                            <div class="heading-style">
+                                                <a href="{{ route('front.subcat',['slug1' => $subcat->category->slug, 'slug2' => $subcat->slug]) }}">{{$subcat->name}}</a>
+                                            </div>
+                                            @if(count($subcat->childs) > 0)
+                                            <ul class="site-megamenu__listLink">
+                                                @foreach($subcat->childs as $childcat)
+                                                <li> <a href="{{ route('front.childcat',['slug1' => $childcat->subcategory->category->slug, 'slug2' => $childcat->subcategory->slug, 'slug3' => $childcat->slug]) }}">{{$childcat->name}}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </div>
                                         @endforeach
-                                    </ul>
+
+                                    </div>
                                 </div>
-                                @endif
                             </li>
-                            @endforeach
+
                         </ul>
                         @endif
 
@@ -201,7 +225,8 @@
 
                     @if($i == 15)
                     <li>
-                        <a href="{{ route('front.categories') }}"><i class="fas fa-plus"></i> {{ $langg->lang15 }} </a>
+                        <a href="{{ route('front.categories') }}"><i class="fas fa-plus"></i> {{ $langg->lang15 }}
+                        </a>
                     </li>
                     @break
                     @endif
@@ -219,10 +244,10 @@
 <!-- Footer area start -->
 
 <!-- footer start -->
-<footer class="site-footer">
+<footer style="     background: #ebffee;" class="site-footer">
     <div class="container">
         <div class="row">
-            <div class="col-xl-4 col-sm-6 mb-5 mb-sm-0 text-center text-sm-left">
+            <div class="col-xl-6 col-sm-6 mb-5 mb-sm-0 text-center text-sm-left">
                 <a class="site-footer__logo" href="#">
                     <img src="assets/img/footer-logo.png" alt="">
                 </a>
@@ -233,146 +258,95 @@
                     </li>
                 </ul>
                 <div class="d-md-flex align-items-center site-footer__social">
-                    <h3 class="mb-2 mb-md-0">Follo us on:</h3>
+                    <h3 class="mb-2 mb-md-0">{{ $langg->lang53 }}:</h3>
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a href="#"><i class="fab fa-google-wallet"></i></a></li>
-                        <li><a href="#"><i class="fab fa-slack-hash"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+
+                        @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                        <li>
+                            <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" class="facebook"
+                               target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if(App\Models\Socialsetting::find(1)->g_status == 1)
+                        <li>
+                            <a href="{{ App\Models\Socialsetting::find(1)->gplus }}" class="google-plus"
+                               target="_blank">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if(App\Models\Socialsetting::find(1)->t_status == 1)
+                        <li>
+                            <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" class="twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if(App\Models\Socialsetting::find(1)->l_status == 1)
+                        <li>
+                            <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}" class="linkedin"
+                               target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if(App\Models\Socialsetting::find(1)->d_status == 1)
+                        <li>
+                            <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" class="dribbble" target="_blank">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </li>
+                        @endif
+
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-2 col-sm-3 mb-5 mb-sm-0 text-center text-sm-left">
-                <h3 class="site-footer__title">Information</h3>
-                <ul class="site-footer__link">
-                    <li><a href="#">Our Blog</a></li>
-                    <li><a href="#">About our shop</a></li>
-                    <li><a href="#">Secure Shopping</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Custom Link</a></li>
-                </ul>
-            </div>
-            <div class="col-xl-2 col-sm-3 mb-2 mb-sm-0 text-center text-sm-left">
-                <h3 class="site-footer__title">My account</h3>
-                <ul class="site-footer__link">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Checkout</a></li>
-                    <li><a href="#">Shopping Cart</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">Custom Link</a></li>
-                </ul>
-            </div>
-            <div class="col-xl-4 col-md-8 offset-md-3 offset-xl-0 mt-4 mt-xl-0">
+            <div class="col-xl-6 col-md-8 offset-md-3 offset-xl-0 mt-4 mt-xl-0">
                 <h3 class="site-footer__title">Latest News</h3>
+                @foreach (App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get() as $blog)
+
                 <div class="media align-items-center site-footer__news">
                     <div class="date">
                         <div class="date__content text-center">
-                            <h2>25</h2>
-                            <h3>Nov</h3>
+                            <h2> {{ date('d',(strtotime($blog->created_at))) }}
+                            </h2>
+                            <h3>										{{ date('M ',(strtotime($blog->created_at))) }}
+                            </h3>
                         </div>
                     </div>
                     <div class="media-body">
-                        <h3><a href="#">Pull Up a chair or a rug and stay a while at calliope</a></h3>
+                        <h3><a href="#"> {{mb_strlen($blog->title,'utf-8') > 45 ? mb_substr($blog->title,0,45,'utf-8')."
+                                .." : $blog->title}}
+                            </a></h3>
                         <ul class="source">
-                            <li><a href="#"><img src="assets/img/company-logo.jpg" alt="">Snstheme</a></li>
-                            <li><a href="#">3 Comment</a></li>
+                            <li><a href="#"><img style="width: 43px; height: 39px;"
+                                                 src="{{ asset('assets/images/blogs/'.$blog->photo) }}" alt="">Snstheme</a>
+                            </li>
+                            <li><a href="#">{{$blog->meta_description}}</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="media align-items-center site-footer__news">
-                    <div class="date">
-                        <div class="date__content text-center">
-                            <h2>25</h2>
-                            <h3>Nov</h3>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h3><a href="#">Pull Up a chair or a rug and stay a while at calliope</a></h3>
-                        <ul class="source">
-                            <li><a href="#"><img src="assets/img/company-logo.jpg" alt="">Snstheme</a></li>
-                            <li><a href="#">3 Comment</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </footer>
 <!-- footer end -->
 
-<!-- footer bottom start -->
-<div class="container">
-    <div class="d-md-flex justify-content-between align-items-center text-center text-md-left footer-bottom">
-        <a href="#" class="d-block mb-3 mb-md-0 footer-bottom__left">
-            <img src="assets/img/visa.png" alt="">
-        </a>
-        <ul class="footer-bottom__right">
-            <li><a href="#"><img src="assets/img/google-play-btn.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/img/app-store-btn.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/img/windows-btn.png" alt=""></a></li>
-        </ul>
-    </div>
-</div>
-<!-- footer bottom end -->
-
-<!-- quick links start -->
-<div class="container">
-    <div class="quick-links">
-        <ul class="quick-links__row d-flex justify-content-between flex-wrap">
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">business</a></li>
-            <li><a href="#">clean</a></li>
-            <li><a href="#">design</a></li>
-            <li><a href="#">fashion</a></li>
-            <li><a href="#">games</a></li>
-            <li><a href="#">magazine</a></li>
-            <li><a href="#">modern</a></li>
-            <li><a href="#">news</a></li>
-            <li><a href="#">psd</a></li>
-            <li><a href="#">slider</a></li>
-            <li><a href="#">sport</a></li>
-            <li><a href="#">style</a></li>
-            <li><a href="#">tech</a></li>
-            <li><a href="#">bootstrap</a></li>
-            <li><a href="#">clean</a></li>
-            <li><a href="#">corporate</a></li>
-            <li><a href="#">creative</a></li>
-            <li><a href="#">cv</a></li>
-            <li><a href="#">designer</a></li>
-            <li><a href="#">freelancer</a></li>
-            <li><a href="#">minimal</a></li>
-        </ul>
-        <ul class="quick-links__row d-flex justify-content-between flex-wrap">
-            <li><a href="#">modern</a></li>
-            <li><a href="#">multipages</a></li>
-            <li><a href="#">onepage</a></li>
-            <li><a href="#">portfolio</a></li>
-            <li><a href="#">best pest</a></li>
-            <li><a href="#">games</a></li>
-            <li><a href="#">cockroach</a></li>
-            <li><a href="#">damp</a></li>
-            <li><a href="#">local past work</a></li>
-            <li><a href="#">multipurpose</a></li>
-            <li><a href="#">pest control</a></li>
-            <li><a href="#">pest control template</a></li>
-            <li><a href="#">pest experts</a></li>
-            <li><a href="#">pest solutions</a></li>
-            <li><a href="#">professional</a></li>
-            <li><a href="#">psd template</a></li>
-        </ul>
-    </div>
-</div>
-<!-- quick links end -->
 
 <!-- copyright section start -->
-<div class="container">
+<div style="     background: #aec1cc;" class="container">
     <div class="footer-copyright text-center">
-        &copy; 2020 Betpia | all rights reserved
+        <p>{!! $gs->copyright !!}</p>
     </div>
 </div>
 <!-- copyright section end -->
-
 
 <!-- Footer aera end -->
 <!-- Back to Top Start -->
@@ -895,8 +869,8 @@
 
 <script type="text/javascript">
     var mainurl = "{{url('/')}}";
-    var gs      = {!! json_encode($gs) !!};
-    var langg    = {!! json_encode($langg) !!};
+    var gs = {!!json_encode($gs)!!};
+    var langg = {!!json_encode($langg)!!};
 </script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -913,7 +887,6 @@
 <script src="{{asset('assets/js/jquery.nice-select.js')}}"></script>
 
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-
 
 
 <script src="{{asset('assets/js/main.js')}}"></script>

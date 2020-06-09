@@ -394,7 +394,7 @@
 								<li><a href="{{ route('front.page',$data->slug) }}">{{ $data->title }}</a></li>
 							@endforeach
 							@if($gs->is_contact == 1)
-							<li><a href="{{ route('front.contact') }}">{{ $langg->lang20 }}</a></li>
+							<li><a href="{{ route('front.previous_contact') }}">{{ $langg->lang20 }}</a></li>
 							@endif
 							<li>
 								<a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">{{ $langg->lang16 }}</a>

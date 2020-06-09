@@ -148,8 +148,8 @@ a:hover { text-decoration: none }
 
 .site-lgoo img {
 	max-width: 171px;
-	margin-top: 1px;
-	margin-bottom: 1px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 .cat-select .nice-select {
   float: none;
