@@ -11,7 +11,7 @@
 									<div class="col-lg-4 col-md-4 col-6 remove-padding">
 
 
-										<a href="{{ route('front.product', $prod->slug) }}" class="item">
+										<a href="{{ route('front.product', $prod->slug) }}" class="product-item">
 											<div class="item-img">
 												@if(!empty($prod->features))
 													<div class="sell-area">
@@ -25,7 +25,7 @@
 															<li>
 																@if(Auth::guard('web')->check())
 
-																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="icofont-heart-alt" ></i>
+																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="fas fa-heart"></i>
 																</span>
 
 																@else 
@@ -37,12 +37,12 @@
 																@endif
 															</li>
 															<li>
-															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="icofont-eye"></i>
+															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="far fa-eye"></i>
 															</span>
 															</li>
 															<li>
 																<span class="add-to-compare" data-href="{{ route('product.compare.add',$prod->id) }}"  data-toggle="tooltip" data-placement="right" title="{{ $langg->lang57 }}" data-placement="right">
-																	<i class="icofont-exchange"></i>
+																	<i class="far fa-exchange-alt"></i>
 																</span>
 															</li>
 														</ul>
@@ -91,7 +91,7 @@
 
 									<div class="col-lg-4 col-md-4 col-6 remove-padding">
 
-										<a href="{{ route('front.product', $prod->slug) }}" class="item">
+										<a href="{{ route('front.product', $prod->slug) }}" class="product-item">
 											<div class="item-img">
 												@if(!empty($prod->features))
 													<div class="sell-area">
@@ -105,7 +105,7 @@
 															<li>
 																@if(Auth::guard('web')->check())
 
-																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="icofont-heart-alt" ></i>
+																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="fas fa-heart"></i>
 																</span>
 
 																@else 
@@ -117,12 +117,12 @@
 																@endif
 															</li>
 															<li>
-															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="icofont-eye"></i>
+															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="far fa-eye"></i>
 															</span>
 															</li>
 															<li>
 																<span class="add-to-compare" data-href="{{ route('product.compare.add',$prod->id) }}"  data-toggle="tooltip" data-placement="right" title="{{ $langg->lang57 }}" data-placement="right">
-																	<i class="icofont-exchange"></i>
+																	<i class="far fa-exchange-alt"></i>
 																</span>
 															</li>
 														</ul>
@@ -175,7 +175,7 @@
 
 							<div class="col-lg-4 col-md-4 col-6 remove-padding">
 
-										<a href="{{ route('front.product', $prod->slug) }}" class="item">
+										<a href="{{ route('front.product', $prod->slug) }}" class="product-item">
 											<div class="item-img">
 												@if(!empty($prod->features))
 													<div class="sell-area">
@@ -189,7 +189,7 @@
 															<li>
 																@if(Auth::guard('web')->check())
 
-																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="icofont-heart-alt" ></i>
+																<span class="add-to-wish" data-href="{{ route('user-wishlist-add',$prod->id) }}" data-toggle="tooltip" data-placement="right" title="{{ $langg->lang54 }}" data-placement="right"><i class="fas fa-heart"></i>
 																</span>
 
 																@else 
@@ -201,12 +201,12 @@
 																@endif
 															</li>
 															<li>
-															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="icofont-eye"></i>
+															<span class="quick-view" rel-toggle="tooltip" title="{{ $langg->lang55 }}" href="javascript:;" data-href="{{ route('product.quick',$prod->id) }}" data-toggle="modal" data-target="#quickview" data-placement="right"> <i class="far fa-eye"></i>
 															</span>
 															</li>
 															<li>
 																<span class="add-to-compare" data-href="{{ route('product.compare.add',$prod->id) }}"  data-toggle="tooltip" data-placement="right" title="{{ $langg->lang57 }}" data-placement="right">
-																	<i class="icofont-exchange"></i>
+																	<i class="far fa-exchange-alt"></i>
 																</span>
 															</li>
 														</ul>

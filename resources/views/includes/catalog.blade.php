@@ -52,7 +52,7 @@
                     </div>
                   </div>
 
-                  <button class="filter-btn" type="submit">{{$langg->lang58}}</button>
+                  <button class="sidebar__body__btn" type="button" onclick="document.getElementById('priceForm').submit();">{{$langg->lang58}}</button>
               </form>
             </div>
             </div>

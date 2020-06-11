@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 <div class="category-page">

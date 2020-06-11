@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
 
 <!-- Vendor Area Start -->
@@ -176,7 +176,7 @@
 <script type="text/javascript">
 
   $(function () {
-    $("#slider-range").slider({
+    $("#price-slider").slider({
     range: true,
     orientation: "horizontal",
     min: 0,
@@ -194,8 +194,8 @@
     }
     });
 
-    $("#min_price").val($("#slider-range").slider("values", 0));
-    $("#max_price").val($("#slider-range").slider("values", 1));
+    $("#min_price").val($("#price-slider").slider("values", 0));
+    $("#max_price").val($("#price-slider").slider("values", 1));
 
   });
 </script>

@@ -1,8 +1,8 @@
 						<div class="item-filter">
+						<p>{{$langg->lang64}} :</p>
 
 							<ul class="filter-list">
 								<li class="item-short-area">
-										<p>{{$langg->lang64}} :</p>
 										<form id="sortForm" class="d-inline-block" action="{{ route('front.vendor', Request::route('category')) }}" method="get">
 											@if (!empty(request()->input('min')))
 												<input type="hidden" name="min" value="{{ request()->input('min') }}">

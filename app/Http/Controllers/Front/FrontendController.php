@@ -178,6 +178,7 @@ class FrontendController extends Controller
 
 
         $categories=Category::all();
+        $slide_cat = Category::limit(2)->get();
 
         return view('front.index', get_defined_vars()
 //            compact('ps', 'sliders', 'top_small_banners', 'feature_products')

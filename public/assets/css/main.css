@@ -2693,11 +2693,11 @@ magnefic popup .mfp-no-margins img.mfp-img {
 
 @media (min-width: 992px) {
     .hero-tab__label {
-        padding: 14px 10px
+        padding: 28px 20px;
     }
 
     .hero-tab__label h2 {
-        font-size: 12px;
+        font-size: 24px;
         text-align: left
     }
 }
@@ -2769,10 +2769,10 @@ magnefic popup .mfp-no-margins img.mfp-img {
 
 @media (min-width: 992px) {
     .hero-tab ul li a {
-        padding: 4px 8px;
-        height: 35px;
-        font-size: 14px;
-        margin-bottom: 10px
+        padding: 8px 16px;
+        height: 60px;
+        font-size: 13px;
+        margin-bottom: 10px;
     }
 }
 
@@ -2996,7 +2996,8 @@ magnefic popup .mfp-no-margins img.mfp-img {
 }
 
 .hero-tab-wrapper.primary-theme .hero-tabContent {
-    border-top: 4px solid #27cbc0
+    border-top: 4px solid #27cbc0;
+    padding: 4rem 1rem 0 1rem;
 }
 
 @media (min-width: 576px) {

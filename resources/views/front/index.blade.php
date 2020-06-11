@@ -1,4 +1,4 @@
-@extends('layouts.index_front')
+@extends('layouts.alternative_front')
 
 @section('content')
 
@@ -45,7 +45,7 @@
                                     </div>
                                     <!-- layer 3 -->
                                     <div class="layer-3">
-                                        <a href="{{$data->link}}" target="_blank" class="mybtn1"><span>{{ $langg->lang25 }} <i
+                                        <a href="{{$data->link}}" target="_blank" class="popup-hero__btn"><span>{{ $langg->lang25 }} <i
                                                         class="fas fa-chevron-right"></i></span></a>
                                     </div>
                                 </div>
@@ -67,118 +67,186 @@
 
 @if($ps->featured_category == 1)
 
-{{-- Slider buttom Category Start --}}
+<!-- feature area start -->
 <div class="featured-area">
     <div class="container">
 
-        <div class="cat-products">
-            <div class="row">
-                @foreach($categories->where('is_featured','=',1) as $cat)
-
-                <div class="col-lg-3 col-md-6">
-                    <a href="{{ route('front.category',$cat->slug) }}" class="single-category">
-
-                        <div class="single-cat-product-items">
-                            <div class="ctpr-img">
-                                <img src="{{asset('assets/images/categories/'.$cat->image) }}" alt="">
-                            </div>
-                            <div class="cat-pro-info">
-                                <h5 class="title">
-                                    {{ $cat->name }}
-                                </h5>
-                                <p class="count">
-                                    {{ count($cat->products) }} {{ $langg->lang4 }}
-                                </p>
+        <div class="row">
+            <div class="col-lg-12 d-mb">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
                             </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="">See more</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                @endforeach
             </div>
+
         </div>
-    </div>
-</div>
-{{-- Slider buttom banner End --}}
 
-@endif
-<div id="test_loader">
-<div class="hero-tabContent">
-    <div class="tab-content">
-        <div class="tab-pane active" id="ht-1">
-            <div class="ht-1-carousel hero-tab-carousel">
-                @foreach($trending_products as $prod)
-
-                <a href="{{ route('front.product', $prod->slug) }}" class="card">
-                    <img class="card-img"
-                         src="{{ $prod->thumbnail ? asset('assets/images/thumbnails/'.$prod->thumbnail):asset('assets/images/noimage.png') }}"
-                         alt="">
-
-                    <div class="card-body">
-                        <h3>{{$prod->name}}</h3>
-
-                        <div class="stars">
-                            <div class="ratings">
-                                <div class="empty-stars"></div>
-                                <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
+        <div class="row">
+            <div class="col-lg-12  d-mb-blk">
+                <div class="row">
+                    <div class="col-sm-6 col-6 col-lg-3 mb-4">
+                        <div class="ftr-inner-content text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>bad wood</h2>
+                                <p>The primary idea of modern furniture</p>
+                                <a href="{{ route('front.categories') }}">See more</a>
                             </div>
-                        </div>
-                        <h4 class="price">{{ $prod->showPrice() }}</h4>
-                        <div class="item-cart-area">
-                            @if($prod->product_type == "affiliate")
-                            <span class="add-to-cart-btn affilate-btn"
-                                  data-href="{{ route('affiliate.product', $prod->slug) }}"><i class="icofont-cart"></i>
-																	{{ $langg->lang251 }}
-																</span>
-                            @else
-                            @if($prod->emptyStock())
-                            <span class="add-to-cart-btn cart-out-of-stock">
-																	<i class="icofont-close-circled"></i> {{ $langg->lang78 }}
-																</span>
-                            @else
-                            <span class="add-to-cart add-to-cart-btn"
-                                  data-href="{{ route('product.cart.add',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang56 }}
-																</span>
-                            <span class="add-to-cart-quick add-to-cart-btn"
-                                  data-href="{{ route('product.cart.quickadd',$prod->id) }}">
-																	<i class="icofont-cart"></i> {{ $langg->lang251 }}
-																</span>
-                            @endif
-                            @endif
                         </div>
                     </div>
 
+                    <div class="col-lg-6 npd  mb-4 ">
+                        <div class="featured-row">
+                            <div class="featured-single text-center text-lg-left">
+                                <img src="{{ asset('assets/img/bg-2.png') }}" alt="">
+                                <div class="ft-content-banner">
+                                    <h3>Big fetival furniture sale</h3>
+                                    <div class="number-blk">
+                                        <p>35
+                                            <sup>OFF</sup>
+                                            <span>%</span>
+                                        </p>
+                                    </div>
+                                    <p class="date-meta">28th - 30th, Dec, 2016</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-row">
+                            <div class="row">
+                                <div class="col-lg-6 pd-rt mb-4 mb-lg-0">
+                                    <div class="featured-single half-box text-center text-lg-left">
+                                        <img src="{{ asset('assets/img/bg-2.png') }}" alt="">
+                                        <div class="ft-content-banner">
+                                            <h4>chair reading</h4>
+                                            <br>
+                                            <h5>From $150.
+                                                <a href="{{ route('front.categories') }}">Buy now</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 pd-lft text-center text-lg-left">
+                                    <div class="featured-single half-box sec-color">
+                                        <img src="{{ asset('assets/img/bg-2.png') }}" alt="">
+                                        <div class="ft-content-banner">
+                                            <h4>chair reading</h4>
+                                            <br>
+                                            <h5>From $150.
+                                                <a href="{{ route('front.categories') }}">Buy now</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-6 col-lg-3  mb-4">
+                        <div class="ftr-inner-content lst-item text-center text-lg-left">
+                            <img src="{{ asset('assets/img/tm-1.png') }}" alt="">
+                            <div class="ft-content">
+                                <h2>Table
+                                    <br>
+                                    Lamps
+                                    <br>
+                                    Design
 
-                </a>
-                @endforeach
+                                </h2>
+                                <a href="{{ route('front.categories') }}">See more ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
         </div>
+
+
+
     </div>
 </div>
-</div>
-@foreach($categories as $key=>$category)
+<!-- feature area end -->
+
+@endif
+
+@foreach($slide_cat as $key=>$category)
 @php
 $subcats=App\Models\Subcategory::where('category_id',$category->id)->get()
 @endphp
 <div class="container mb-5 pb-xl-2">
     @if($key%2==0)
-    <div class="hero-tab-wrapper primary-theme d-sm-flex">
+    <div class="hero-tab-wrapper primary-theme d-sm-flex {{$category->slug}}">
         @else
-        <div class="hero-tab-wrapper flower-theme d-sm-flex">
+        <div class="hero-tab-wrapper flower-theme d-sm-flex {{$category->slug}}">
             @endif
             <div class="hero-tab">
                 <div class="hero-tab__label">
-                    <h2><a href="{{route('front.category',[$category->slug,$subcats->first()['slug']])}}">{{$category->name}}</a>
-                    </h2>
+                    <h2>{{$category->name}}</h2>
                 </div>
                 <ul class="nav">
-
                     <li class="nav-item">
                         @foreach($subcats as $subcat)
 
-                        <a class="nav-link d-flex align-items-center" data-toggle="tab"
-                           href=""
-                           onclick="load_cat_data('{{$category->slug}}','{{$subcat->slug}}');">
+                        <a class="nav-link d-flex align-items-center {{ $loop->first ? 'active' : '' }}" data-toggle="tab" href="" data-id="{{$category->slug}}" data-paraa="{{$subcat->slug}}" onclick="load_cat_data('{{$category->slug}}','{{$subcat->slug}}');">
                             {{$subcat->name}}
                         </a>
                         @endforeach
@@ -186,26 +254,94 @@ $subcats=App\Models\Subcategory::where('category_id',$category->id)->get()
 
                 </ul>
             </div>
-            <div  id="content_cat_{{$category->slug}}">
-
-
-            </div>
         </div>
     </div>
 </div>
 @endforeach
+
+    @if($ps->small_banner == 1)
+
+		<!-- Banner Area One Start -->
+		<section class="banner-section">
+			<div class="container">
+				@foreach($top_small_banners->chunk(2) as $chunk)
+					<div class="row">
+						@foreach($chunk as $img)
+							<div class="col-lg-6 remove-padding">
+								<div class="left">
+									<a class="banner-effect" href="{{ $img->link }}" target="_blank">
+										<img src="{{asset('assets/images/banners/'.$img->photo)}}" alt="">
+									</a>
+								</div>
+							</div>
+						@endforeach
+					</div>
+				@endforeach
+			</div>
+		</section>
+		<!-- Banner Area One Start -->
+    @endif
+    
+    <section id="extraData">
+		<div class="text-center">
+			<img src="{{asset('assets/images/'.$gs->loader)}}">
+		</div>
+	</section>
+
+
 @endsection
 @section('scripts')
 <script>
     function load_cat_data(param, param2) {
         // $("#content_cat_"+param).load("{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2))
+        
+        $("." + param).find('.hero-tabContent').remove();
         $.ajax({
             url: "{{ route('front.category', [':param',':param2'])}}".replace(':param', param).replace(':param2', param2),
             success: function (response) {
-                $("#content_cat_" + param).html(response)
-                console.log(response)
+                $("." + param).append(response);
+                $(".owl-carousel").owlCarousel({
+                    items:1,
+                    nav:false,
+                    dot:true,
+                    loop:true,
+                    margin:20,
+                    autoplay:true,
+                    startPosition: 1,
+                    autoplayTimeout:2000,
+                    smartSpeed:1000,
+                    responsiveClass:true,
+                    autoplayHoverPause:true,
+                    responsive:{
+                    0:{
+                        items:1,
+                        
+                    },
+                    768:{
+                        items:3,
+                    },
+                    1000:{
+                        items:4,
+                    }
+                    }
+                });
             }
         })
     }
+    $(document).ready(function () {
+        $('.hero-tab ul li a.active').trigger('click');
+    });
+</script>
+
+<script>
+    $(window).on('load',function() {
+
+        setTimeout(function(){
+
+            $('#extraData').load('{{route('front.extraIndex')}}');
+
+        }, 500);
+    });
+
 </script>
 @endsection

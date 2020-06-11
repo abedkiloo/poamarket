@@ -1,29 +1,18 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 
 @section('content')
 
-	<!-- Breadcrumb Area Start -->
-	<div class="breadcrumb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="pages">
-						<li>
-							<a href="{{ route('front.index') }}">
-								{{ $langg->lang17 }}
-							</a>
-						</li>
-						<li>
-							<a href="{{ route('product.compare') }}">
-								{{ $langg->lang69 }}
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Breadcrumb Area End -->
+<!-- Breadcrumb Area Start -->
+<div class="container">
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb breadcrumb-style">
+		<li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="fas fa-home"></i> {{ $langg->lang17 }}</a></li>
+		
+		<li class="breadcrumb-item active" aria-current="page"><a href="{{ route('user-wishlists') }}">{{ $langg->lang69 }}</a></li>
+	  </ol>
+	</nav>
+  </div>
+  <!-- Breadcrumb Area End -->
 
 	<!-- Compare Area Start -->
 	<section class="compare-page">
@@ -94,11 +83,11 @@
 													@foreach($products as $product)
 													<td class="c{{$product['item']['id']}}">
 															@if($product['item']['product_type'] == "affiliate")
-															<a href="{{ route('affiliate.product', $product['item']['slug']) }}" class="btn__bg">{{ $langg->lang251 }}</a>
+															<a href="{{ route('affiliate.product', $product['item']['slug']) }}" class="popup-hero__btn">{{ $langg->lang251 }}</a>
 															@else														
 														
-														<a href="javascript:;" data-href="{{ route('product.cart.add',$product['item']['id']) }}" class="btn__bg add-to-cart">{{ $langg->lang75 }}</a>
-													<a href="{{ route('product.cart.quickadd',$product['item']['id']) }}" class="btn__bg">{{ $langg->lang251 }}</a>
+														<a href="javascript:;" data-href="{{ route('product.cart.add',$product['item']['id']) }}" class="popup-hero__btn add-to-cart">{{ $langg->lang75 }}</a>
+													<a href="{{ route('product.cart.quickadd',$product['item']['id']) }}" class="popup-hero__btn">{{ $langg->lang251 }}</a>
 															@endif
 													</td>
 													@endforeach

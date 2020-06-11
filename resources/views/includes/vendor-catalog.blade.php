@@ -41,7 +41,13 @@
                   @if (!empty(request()->input('sort')))
                     <input type="hidden" name="sort" value="{{ request()->input('sort') }}" />
                   @endif
-                  <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+                  <div class="price-range">
+                    <div class="section price">
+                      <div id="price-slider" class="price-slider" name="rangeInput"></div>
+                    </div>
+                  </div>
+                  <br>
+                  
                   <div class="livecount">
                     <input type="number" min=0  name="min"  id="min_price" class="price-range-field" />
                     <span>{{$langg->lang62}}</span>
@@ -49,7 +55,7 @@
                   </div>
                 </form>
 
-                <button class="filter-btn" type="button" onclick="document.getElementById('priceForm').submit();">{{$langg->lang58}}</button>
+                <button class="sidebar__body__btn" type="button" onclick="document.getElementById('priceForm').submit();">{{$langg->lang58}}</button>
             </div>
             </div>
 
@@ -157,12 +163,12 @@
                 <ul class="list">
                   <li>
                       <a href="javascript:;" data-toggle="modal" data-target="{{ Auth::guard('web')->check() ? '#vendorform1' : '#comment-log-reg' }}">
-                          <i class="icofont-email"></i> <span class="service-text">{{ $langg->lang228 }}</span>
+                        <i class="fas fa-envelope"></i> <span class="service-text">{{ $langg->lang228 }}</span>
                       </a>
                   </li>
                   <li>
                         <a href="tel:+{{$vendor->shop_number}}">
-                          <i class="icofont-phone"></i> <span class="service-text">{{$vendor->shop_number}}</span>
+                          <i class="fas fa-phone"></i> <span class="service-text">{{$vendor->shop_number}}</span>
                         </a>
                   </li>
                 </ul>

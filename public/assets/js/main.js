@@ -146,6 +146,33 @@
           }
         }
       });
+      
+
+      $(".owl-carousel").owlCarousel({
+        items:1,
+        nav:true,
+        dot:true,
+        loop:true,
+        margin:20,
+        autoplay:true,
+        startPosition: 1,
+        autoplayTimeout:2000,
+        smartSpeed:1000,
+        responsiveClass:true,
+        autoplayHoverPause:true,
+        responsive:{
+          0:{
+            items:1,
+              
+          },
+          768:{
+            items:3,
+          },
+          1000:{
+            items:4,
+          }
+        }
+      });
 
       $(".hot-and-new-item-slider").owlCarousel({
         items: 1,
@@ -188,7 +215,101 @@
         }
       });
 
+      // flas_deal_slider
+      var $flas_deal_slider = $('.flas-deal-slider');
 
+      if ($flas_deal_slider.children().length > 1) {
+          $flas_deal_slider.owlCarousel({
+              loop: true,
+              nav: false,
+              dots: false,
+              margin: 10,
+              autoplay: true,
+              autoplayTimeout: 6000,
+              smartSpeed: 1000,
+              responsive: {
+                  0: {
+                      items: 1,
+                  },
+                  414: {
+                      items: 2,
+                  },
+                  768: {
+                      items: 2,
+                  },
+                  992: {
+                      items: 3
+                  },
+                  1200: {
+                      items: 4
+                  }
+              }
+          });
+
+      }
+
+      // aside_review_slider
+      var $aside_review_slider = $('.aside-review-slider');
+
+      if ($aside_review_slider.children().length > 1) {
+
+          $aside_review_slider.owlCarousel({
+              loop: true,
+              nav: false,
+              dots: true,
+              margin: 30,
+              autoplay: true,
+              autoplayTimeout: 6000,
+              smartSpeed: 1000,
+              responsive: {
+                  0: {
+                      items: 1
+                  },
+                  768: {
+                      items: 1
+                  }
+              }
+          });
+
+      }
+
+      // partner-slider
+    var $partner_Slider = $('.partner-slider');
+    $partner_Slider.owlCarousel({
+        loop: true,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        margin: 30,
+        autoplayTimeout: 3000,
+        smartSpeed: 1000,
+        responsive: {
+            0: {
+                items: 2
+            },
+            767: {
+                items: 3
+            },
+            993: {
+                items: 4
+            },
+            1200: {
+                items: 5
+            },
+            1920: {
+                items: 5
+            }
+        }
+    });
+
+      // Product deal countdown
+      $('[data-countdown]').each(function () {
+          var $this = $(this),
+              finalDate = $(this).data('countdown');
+          $this.countdown(finalDate, function (event) {
+              $this.html(event.strftime('<span>%D : <small>Days</small></span> <span>%H : <small>Hrs</small></span>  <span>%M : <small>Min</small></span> <span>%S <small>Sec</small></span>'));
+          });
+      });
 
 
       jQuery('<div class="product-hero-quantity-nav"><div class="product-hero-quantity-button product-hero-quantity-up"><i class="fas fa-caret-up"></i></div><div class="product-hero-quantity-button product-hero-quantity-down"><i class="fas fa-caret-down"></i></div></div>').insertAfter('.product-hero-quantity input');

@@ -1,41 +1,38 @@
-@extends('layouts.front')
+@extends('layouts.alternative_front')
 @section('content')
+
 <!-- Breadcrumb Area Start -->
-<div class="breadcrumb-area">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-12">
-            <ul class="pages">
-               <li>
-                  <a href="{{route('front.index')}}">{{ $langg->lang17 }}</a>
-               </li>
-               @if (!empty($cat))
-               <li>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-style">
+      <li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="fas fa-home"></i> {{ $langg->lang17 }}</a></li>
+      @if (!empty($cat))
+               <li class="breadcrumb-item">
                   <a href="{{route('front.category', $cat->slug)}}">{{ $cat->name }}</a>
                </li>
                @endif
                @if (!empty($subcat))
-               <li>
+               <li class="breadcrumb-item">
                   <a href="{{route('front.category', [$cat->slug, $subcat->slug])}}">{{ $subcat->name }}</a>
                </li>
                @endif
                @if (!empty($childcat))
-               <li>
+               <li class="breadcrumb-item">
                   <a href="{{route('front.category', [$cat->slug, $subcat->slug, $childcat->slug])}}">{{ $childcat->name }}</a>
                </li>
                @endif
                @if (empty($childcat) && empty($subcat) && empty($cat))
-               <li>
+               <li class="breadcrumb-item">
                   <a href="{{route('front.category')}}">{{ $langg->lang36 }}</a>
                </li>
                @endif
-
-            </ul>
-         </div>
-      </div>
-   </div>
+      
+    </ol>
+  </nav>
 </div>
-<!-- Breadcrumb Area End -->
+<!-- Breadcrumb Area End -->\
+
+
 <!-- SubCategori Area Start -->
 <section class="sub-categori">
    <div class="container">

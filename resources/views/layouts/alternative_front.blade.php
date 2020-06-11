@@ -55,90 +55,205 @@
 </head>
 <body>
 
+@if($gs->is_loader == 1)
+    <div class="preloader" id="preloader" style="background: url({{asset('assets/images/'.$gs->loader)}}) no-repeat scroll center center #FFF;"></div>
+@endif
 
-<!-- logo section start -->
-<div class="container text-center">
-    <a href="" class="site-lgoo"><img src="assets/img/site-logo.png" alt=""></a>
-</div>
-<!-- logo section end -->
+@if($gs->is_popup== 1)
 
-<!-- navbar top start -->
-<div class="navbar-top">
+	@if(isset($visited))
+		<div style="display:none">
+			<img src="{{asset('assets/images/'.$gs->popup_background)}}">
+		</div>
+
+		<!--  Starting of subscribe-pre-loader Area   -->
+		<div class="subscribe-preloader-wrap" id="subscriptionForm" style="display: none;">
+			<div class="subscribePreloader__thumb" style="background-image: url({{asset('assets/images/'.$gs->popup_background)}});">
+				<span class="preload-close"><i class="fas fa-times"></i></span>
+				<div class="subscribePreloader__text text-center">
+					<h1>{{$gs->popup_title}}</h1>
+					<p>{{$gs->popup_text}}</p>
+					<form action="{{route('front.subscribe')}}" id="subscribeform" method="POST">
+						{{csrf_field()}}
+						<div class="form-group">
+							<input type="email" name="email"  placeholder="{{ $langg->lang741 }}" required="">
+							<button id="sub-btn" type="submit">{{ $langg->lang742 }}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--  Ending of subscribe-pre-loader Area   -->
+
+	@endif
+
+@endif
+
+<!-- Header bar section start -->
+<div class="header-bar-section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-sm-7">
-                <form action="#" class="navbar-top__form">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search anything here..">
-                        <div class="input-group-append">
-                            <button class="btn" type="button"><img src="assets/img/search-outline.svg" alt=""></button>
-                        </div>
-                    </div>
-                </form>
+        <div class="d-sm-flex justify-content-between">
+            <div class="header-top-left-blk top--left">
+                <ul class="header-top__right custom-arrow d-flex align-self-center justify-content-between vertical-seperator mb-2 mb-sm-0">
+                    @if($gs->is_language == 1)
+                    
+                        <li>
+                            <select class="selectpicker" data-width="fit">
+                                @foreach(DB::table('languages')->get() as $language)
+					    		    <option data-content='<span class="flag-icon flag-icon-us"></span> {{$language->language}}' value="{{route('front.language',$language->id)}}" {{ Session::has('language') ? ( Session::get('language') == $language->id ? 'selected' : '' ) : (DB::table('languages')->where('is_default','=',1)->first()->id == $language->id ? 'selected' : '') }} >{{$language->language}}</option>
+					    	    @endforeach
+                            </select>
+                        </li>
+                    @endif
+                    @if($gs->is_currency == 1)
+                    <li>
+                        <span>{{ Session::has('currency') ?   DB::table('currencies')->where('id','=',Session::get('currency'))->first()->sign   : DB::table('currencies')->where('is_default','=',1)->first()->sign }}</span>
+                        <select name="currency" class="selectpicker" data-width="fit">
+                            @foreach(DB::table('currencies')->get() as $currency)
+								<option value="{{route('front.currency',$currency->id)}}" {{ Session::has('currency') ? ( Session::get('currency') == $currency->id ? 'selected' : '' ) : (DB::table('currencies')->where('is_default','=',1)->first()->id == $currency->id ? 'selected' : '') }} >{{$currency->name}}</option>
+							@endforeach
+                        </select>
+                    </li>
+				    @endif
+                    
+                </ul>
             </div>
-            <div class="col-sm-5">
-                <ul class="navbar-top__link float-sm-right text-center text-sm-auto mt-3 mt-sm-0">
-                    <li>
-                        <a href="{{ route('user.login') }}">
-                            <img src="assets/img/user-icon.png" alt="">
-                            <p>Account</p>
+            <div class="header-top-right-blk">
+                <ul>
+                    @if(!Auth::guard('web')->check())
+                        <li>
+                            <a href="{{ route('user.login') }}">
+                                <i class="fal fa-unlock-alt"></i>
+                                <span class="sign-in">{{ $langg->lang12 }}</span> <span>|</span>
+                                <span class="join">{{ $langg->lang13 }}</span>
+                            </a>
+                        </li>
+					@else
+                        <li><a href="{{ route('user-dashboard') }}"><i class="fas fa-user"></i>{{ $langg->lang11 }}</a></li>
+                    @endif
+                    @if($gs->reg_vendor == 1)
+                        @if(Auth::check())
+						<li>
+	                        @if(Auth::guard('web')->user()->is_vendor == 2)
+	                            <a href="{{ route('vendor-dashboard') }}">{{ $langg->lang220 }}</a>
+	                        @else
+	                        	<a href="{{ route('user-package') }}">{{ $langg->lang220 }}</a>
+	                        @endif
+						</li>
+                        @else
+						<li>
+							<a href="javascript:;" data-toggle="modal" data-target="#vendor-login">{{ $langg->lang220 }}</a>
+						</li>
+						@endif
+					@endif
+                    <li data-toggle="tooltip" data-placement="top" title="{{ $langg->lang9 }}">
+                        @if(Auth::guard('web')->check())
+							<a href="{{ route('user-wishlists') }}" class="wish">
+                                <i class="fal fa-heart"></i>
+                                My Wishlist
+								<span class="badge badge-primary" id="wishlist-count">{{ Auth::user()->wishlistCount() }}</span>
+							</a>
+						@else
+							<a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
+								<i class="fal fa-heart"></i>
+                                My Wishlist
+								<span class="badge badge-success" id="wishlist-count">0</span>
+							</a>
+						@endif
+                    </li>
+                    <li data-toggle="tooltip" data-placement="top" title="{{ $langg->lang10 }}">
+                        <a href="{{ route('product.compare') }}" class="wish compare-product">
+                            <div class="icon">
+                                <i class="fas fa-exchange-alt"></i>
+                                Compare
+                                <span class="badge badge-success" id="compare-count">{{ Session::has('compare') ? count(Session::get('compare')->items) : '0' }}</span>
+                            </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('front.cart') }}">
-                            <img src="assets/img/cart-icon.png" alt="">
-                            <p>{{ Session::has('cart') ? count(Session::get('cart')->items) : '0' }}</p>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<!-- navbar top end -->
+<!-- Header bar section complate -->
 
-<!-- site header start -->
+<!-- Header top info area start -->
 
-<div class="site-menu-inner">
+<div class="header-top-info-arae">
     <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{{ route('front.index') }}" class="site-lgoo"><img src="{{ asset('assets/img/site-logo.png') }}" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-7 mb-3 mb-md-0">
+                <div class="header-top-info-search-bar">
+                    <div class="cat-select">
+                        <select name="category" id="category_select">
+                            <option value="">{{ $langg->lang1 }}</option>
+							@foreach($categories as $data)
+							    <option value="{{ $data->slug }}" {{ Request::route('category') == $data->slug ? 'selected' : '' }}>{{ $data->name }}</option>
+						    @endforeach
+                        </select>
+                    </div>
+                    <div class="search-main-box">
+                        <form id="searchForm" class="search-form" action="{{ route('front.category', [Request::route('category'),Request::route('subcategory'),Request::route('childcategory')]) }}" method="GET">
+                            @if (!empty(request()->input('sort')))
+								<input type="hidden" name="sort" value="{{ request()->input('sort') }}">
+							@endif
+							@if (!empty(request()->input('minprice')))
+								<input type="hidden" name="minprice" value="{{ request()->input('minprice') }}">
+							@endif
+							@if (!empty(request()->input('maxprice')))
+								<input type="hidden" name="maxprice" value="{{ request()->input('maxprice') }}">
+							@endif
+                            <div class="searc-box-inner">
+                                <input type="text" id="prod_name" name="search" placeholder="{{ $langg->lang2 }}" value="{{ request()->input('search') }}" autocomplete="off">
+                                <button type="submit"><i class="fal fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="header-top-right-info">
+                    <ul>
+                        <li><a href=""><img src="{{ asset('assets/img/h-icon-1.png') }}" alt="">Free call us<span>(+234) 9876543210</span></a></li>
+                        <li><a href="{{ route('front.cart') }}"><img src="{{ asset('assets/img/h-icon-2.png') }}" alt="">Your cart<span><span class="cart-quantity d-inline-block" id="cart-count">{{ Session::has('cart') ? count(Session::get('cart')->items) : '0' }}</span> item(s)</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="site-menu-wrapper">
             <div class="d-flex justify-content-between site-main-menu-area">
                 <div class="cat-wrapper">
-                    <a href="#/" class="cat-btn"><i class="fas fa-bars"></i></a>
+                    <a href="#/" class="cat-btn"><i class="fas fa-bars"></i>{{ $langg->lang14 }}</a>
                 </div>
                 <div class="site-main-menu">
                     <button class="site-main-menu-trigger"><i class="fas fa-bars"></i> Menu</button>
                     <ul>
-
-
                         @if($gs->is_home == 1)
-                        <li><a href="{{ route('front.index') }}"><i class="fas fa-home"></i>{{ $langg->lang17 }}</a>
-                        </li>
-                        @endif
-                        <li><a href="{{ route('front.blog') }}"><i class="fas fa-blog"></i>{{
-                                $langg->lang18 }}</a></li>
-                        @if($gs->is_faq == 1)
-                        <li><a href="{{ route('front.faq') }}"><i class="fas fa-blog"></i>{{ $langg->lang19 }}</a></li>
-                        @endif
-                        @foreach(DB::table('pages')->where('header','=',1)->get() as $data)
-                        <li><a href="{{ route('front.page',$data->slug) }}"><i class="fas fa-blog"></i>{{ $data->title
-                                }}</a></li>
-                        @endforeach
-                        @if($gs->is_contact == 1)
-                        <li><a href="{{ route('front.contact') }}"><i class="fas fa-blog"></i>{{ $langg->lang20 }}</a>
-                        </li>
-                        @endif
-                        <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal"
-                               class="track-btn"><i class="fas fa-blog"></i>{{ $langg->lang16 }}</a>
-                        </li>
-
+							<li><a href="{{ route('front.index') }}"><i class="fas fa-home"></i>{{ $langg->lang17 }}</a></li>
+						@endif
+							<li><a href="{{ route('front.blog') }}"><i class="fas fa-briefcase"></i>{{ $langg->lang18 }}</a></li>
+						@if($gs->is_faq == 1)
+							<li><a href="{{ route('front.faq') }}"><i class="fal fa-code-merge"></i> {{ $langg->lang19 }}</a></li>
+						@endif
+						@foreach(DB::table('pages')->where('header','=',1)->get() as $data)
+							<li><a href="{{ route('front.page',$data->slug) }}"><i class="fas fa-coffee"></i>{{ $data->title }}</a></li>
+						@endforeach
+						@if($gs->is_contact == 1)
+							<li><a href="{{ route('front.contact') }}"><i class="far fa-address-card"></i>{{ $langg->lang20 }}</a></li>
+						@endif
+							<li>
+								<a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">{{ $langg->lang16 }}</a>
+							</li>
                     </ul>
-
                 </div>
             </div>
             <div class="site-megamenu">
-
                 <ul>
                     @php
                     $i=1;
@@ -181,19 +296,6 @@
                             <li>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-4 pb-5 pb-md-0 d-none d-md-block">
-                                            <div class="site-megamenu__slider">
-                                                <div>
-                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
-                                                </div>
-                                                <div>
-                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
-                                                </div>
-                                                <div>
-                                                    <div><img src="assets/img/product-img.jpg" alt=""></div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         @foreach($category->subs as $subcat)
                                         <div class="col-md-4 mb-4 mb-md-0">
                                             <div class="heading-style">
@@ -204,7 +306,7 @@
                                                 @foreach($subcat->childs as $childcat)
                                                 <li> <a href="{{ route('front.childcat',['slug1' => $childcat->subcategory->category->slug, 'slug2' => $childcat->subcategory->slug, 'slug3' => $childcat->slug]) }}">{{$childcat->name}}</a>
                                                 </li>
-                                                @endforeach
+                                                  @endforeach
                                             </ul>
                                             @endif
                                         </div>
@@ -237,26 +339,53 @@
                 </ul>
             </div>
         </div>
+
     </div>
 </div>
-<!-- site header end -->
+
+<!-- Header top info area end -->
+
 @yield('content')
 <!-- Footer area start -->
 
-<!-- footer start -->
-<footer style="     background: #ebffee;" class="site-footer">
+
+<!-- Call to action area start -->
+
+<div class="call-to-action-area">
     <div class="container">
         <div class="row">
-            <div class="col-xl-6 col-sm-6 mb-5 mb-sm-0 text-center text-sm-left">
+            <div class="col-lg-6">
+                <div class="cl-ac-left-text">
+                    <p><i class="fal fa-paper-plane"></i>Sign up to Newsletter <span>and receive <span style="color: #f6ff04">$20</span> coupon for first shopping.</span></p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="subs-form">
+                    <form action="{{route('front.subscribe')}}" id="subscribeform" method="POST">
+                        {{csrf_field()}}
+                        <div class="subs-bx">
+                            <input type="email" name="email"  placeholder="{{ $langg->lang741 }}" required="">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to action area end -->
+<!-- footer start -->
+<footer style="background: #ebffee;" class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-sm-6 mb-5 mb-sm-0 text-center text-sm-left">
                 <a class="site-footer__logo" href="#">
                     <img src="assets/img/footer-logo.png" alt="">
                 </a>
-                <ul class="site-footer__contact">
-                    <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
-                    <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> Phone: +1234567890</a></li>
-                    <li><a href="mailto:info@yourdomain.com"><i class="fas fa-envelope"></i> Email: info@yourdomain.com</a>
-                    </li>
-                </ul>
+                <p>{!! $gs->footer !!}
+
+                </p>
                 <div class="d-md-flex align-items-center site-footer__social">
                     <h3 class="mb-2 mb-md-0">{{ $langg->lang53 }}:</h3>
                     <ul>
@@ -307,32 +436,68 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-8 offset-md-3 offset-xl-0 mt-4 mt-xl-0">
-                <h3 class="site-footer__title">Latest News</h3>
-                @foreach (App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get() as $blog)
-
-                <div class="media align-items-center site-footer__news">
-                    <div class="date">
-                        <div class="date__content text-center">
-                            <h2> {{ date('d',(strtotime($blog->created_at))) }}
-                            </h2>
-                            <h3>										{{ date('M ',(strtotime($blog->created_at))) }}
-                            </h3>
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="single-footer-widget">
+                    <h4 class="widget-title">{{ $langg->lang21 }}</h4>
+                    <div class="widget-content">
+                        <div class="footer-signle-menu">
+                            <ul>
+                                <li>
+                                    <a href="{{ route('front.index') }}">
+                                        {{ $langg->lang22 }}
+                                    </a>
+                                </li>
+        
+                                @foreach(DB::table('pages')->where('footer','=',1)->get() as $data)
+                                <li>
+                                    <a href="{{ route('front.page',$data->slug) }}">
+                                        {{ $data->title }}
+                                    </a>
+                                </li>
+                                @endforeach
+        
+                                <li>
+                                    <a href="{{ route('front.contact') }}">
+                                        {{ $langg->lang23 }}
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="media-body">
-                        <h3><a href="#"> {{mb_strlen($blog->title,'utf-8') > 45 ? mb_substr($blog->title,0,45,'utf-8')."
-                                .." : $blog->title}}
-                            </a></h3>
-                        <ul class="source">
-                            <li><a href="#"><img style="width: 43px; height: 39px;"
-                                                 src="{{ asset('assets/images/blogs/'.$blog->photo) }}" alt="">Snstheme</a>
-                            </li>
-                            <li><a href="#">{{$blog->meta_description}}</a></li>
-                        </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-4 mt-xl-0">
+                <div class="single-footer-widget">
+                    <h4 class="widget-title">{{ $langg->lang24 }}</h4>
+                    <div class="widget-content">
+                        <div class="footer-signle-menu">
+                            @foreach (App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get() as $blog)
+
+                            <div class="media align-items-center site-footer__news">
+                                <div class="date">
+                                    <div class="date__content text-center">
+                                        <h2> {{ date('d',(strtotime($blog->created_at))) }}
+                                        </h2>
+                                        <h3>										{{ date('M ',(strtotime($blog->created_at))) }}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h3><a href="#"> {{mb_strlen($blog->title,'utf-8') > 45 ? mb_substr($blog->title,0,45,'utf-8')."
+                                            .." : $blog->title}}
+                                        </a></h3>
+                                    <ul class="source">
+                                        <li><a href="#"><img style="width: 43px; height: 39px;"
+                                                            src="{{ asset('assets/images/blogs/'.$blog->photo) }}" alt="">Snstheme</a>
+                                        </li>
+                                        <li><a href="#">{{$blog->meta_description}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
@@ -341,19 +506,17 @@
 
 
 <!-- copyright section start -->
-<div style="     background: #aec1cc;" class="container">
-    <div class="footer-copyright text-center">
+<div class="footer-cp-text">
+    <div class="d-md-flex justify-content-between text-center text-md-left">
         <p>{!! $gs->copyright !!}</p>
+        <div class="pm-icons mt-3 mt-md-0">
+            <a href=""><img src="assets/img/pm-img.png" alt=""></a>
+        </div>
     </div>
 </div>
 <!-- copyright section end -->
 
 <!-- Footer aera end -->
-<!-- Back to Top Start -->
-<div class="bottomtotop">
-    <i class="fas fa-chevron-right"></i>
-</div>
-<!-- Back to Top End -->
 
 <!-- LOGIN MODAL -->
 <div class="modal fade" id="comment-log-reg" tabindex="-1" role="dialog" aria-labelledby="comment-log-reg-Title"
